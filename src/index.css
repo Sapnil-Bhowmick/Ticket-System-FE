@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+
+
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+
+  /** ----------- Backgrounds ----------- */
+  --bg-welcome: #F8FBFE;
+  --bg-white: #FFFFFF;
+  --bg-welcomeCompanies: #EBF1F9;
+
+  --bg-Inactive-modal: rgba(149,149,149,0.2);
+  --bg-modal-member: #FFFFFF;
+  --bg-modal-delete: #FAFBFC;
+
+  --bg-sidebar: #FAFBFC;
+
+  --bg-editProfile-form: FAFBFC;
+
+  /** ----------- Spacings ----------- */
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 32px;
+  --spacing-xl: 64px;
+
+  /** ----------- Buttons ----------- */
+  --button-bg-dark-1: #244779;
+  --button-bg-dark-2: #184E7F;
+  --button-bg-light: #FFFFFF;
+
+  --bg-user-login_register: #C3C3C3;
+
+  /** ----------- Font Color ----------- */
+  --text-primary: #30404D;
+  --text-desc: rgba(48,64,77,0.7);
+
+  /* Active Text */
+  --text-active: #184E7F;
+
+  /* Welcome Price Card */
+  --text-pricing: #3A7ABD;
+  --text-pricing-subtext: #30404D;
+  --text-monthly: #98A8B3;
+
+  --text-priceBtn: #244779;
+
+  --text-footer: #1B1A1A;
+
+  /* Login-Register */
+  --text-login-primary: #000000;
+  --text-register-primary: #333333;
+  --text-login_register-label: #666666;
+  --text-btn: #FFFFFF;
+
+  --text-privacyPolicy: #676B5F;
+
+  /* Dashboard */
+  --text-dashboard: #6A6B70;
+  --text-searchPlaceholder: #B6B6B6;
+  --text-tabHeading: #888888;
+
+  /* Ticket */
+  --text-ticket-address: #2E2C34;
+  --text-ticket-content: #000000;
+  --text-ticket-createdTime: #84818A;
+  --text-ticket-elapsedTime: #000000;
+  --text-tickerRaiser: #84818A;
+
+  /* Contact Center */
+  --text-contactCenter: #6A6B70;
+  --text-contactCenter-chatNo: #5E9BD5;
+  --text-contactCenter-chatQuery: #9A9B9D;
+  --text-contactCenter-ticketAddress: #86898C;
+
+  /* Contact Center - Chat */
+  --text-contactCenter-chatTime: #8C8E92;
+  --text-contactCenter-chatText: #9A9B9D;
+  --text-chatCenter-missedChat: #FF0000
+  --text-contactCenter-typeChatPlaceholder: rgba(0,0,0,0.35);
+
+  /* Contact Center - Details */
+  --text-contactCenter-detailsHeader: #184E7F;
+  --text-contactCenter-detailsText-name: #808080;
+  --text-contactCenter-detailsText-phone_email: #7F7F7F;
+
+  /* Contact Center - TeamMates */
+  --text-contactCenter-TeamMates-Header: #184E7F;
+  --text-contactCenter-TeamMates-Name: #808080;
+  
+  /* Contact Center - Ticket Status */
+  --text-contactCenter-TicketStatus: #808080;
+
+  /* Analytics */
+  --text-analytics-header: #00D907;
+  --text-analytics-desc: #000000;
+
+  /* Team Members */
+  --text-teamMember-columnHeading: #184E7F;
+  --text-teamMember: #000000;
+
+  /* Settings */
+  --text-settings-title: #636060;
+  --text-settings-label: #5E5E5E;
+  --text-settings-placeholder: #000000;
+  --text-settings-info: #7C7C7C;
+
+
+  /** Font Family */
+  --font-Barlow: "Barlow", sans-serif;
+  --font-Inter: "Inter", sans-serif;
+  --font-Poppins: "Poppins", sans-serif;
+  --font-Monserrat: "Montserrat", sans-serif;
+  --font-Nunito: "Nunito", sans-serif;
+  
+  /* Barlow - bold , regular ,medium
+  Inter - medium , regular , semibold , bold
+  Poppins: Semibold , regular  , medium
+  Montserrat - medium  , semibold ,
+  Nunito: semibold , 
+  Helvetica - regular --> Pain font (not found in google font hence using Inter in place of this) */
+
+  /** Box Shadow */
+  --boxShadow-welcomeChart: 1.09px 3.27px 11.98px 0px rgba(0,0,0,0.11);
+  --boxShadow-priceCard: 0px 4px 34px 0px rgba(0,0,0,0.03);
+  --boxShadow-popup_modal_info: 0px 4px 32.35px 0px rgba(0,0,0,0.25);
+
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
