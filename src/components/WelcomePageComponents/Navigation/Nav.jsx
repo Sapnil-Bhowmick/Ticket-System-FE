@@ -2,7 +2,7 @@ import styles from "./Nav.module.css"
 
 import logo from "../../../assets/icons/logo.svg"
 import { Link } from "react-router-dom"
-Link
+
 
 const Nav = () => {
   return (

@@ -69,6 +69,9 @@
     letter-spacing: 0px;
 }
 
+.footerMain > .footerWrapper > nav > div li {
+    cursor: pointer;
+}
 
 
 .socialIcons {
@@ -82,4 +85,8 @@
 
 .socialIcons > img {
     margin: 0px 0px 0px var(--spacing-md);
+}
+
+.socialIcons > img:hover {
+    cursor: pointer;
 }

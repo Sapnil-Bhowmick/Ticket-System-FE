@@ -81,6 +81,10 @@
     align-items: center;
 }
 
+.HeroMain>.HeroWrapper .left .btnContainer .getstarted:hover {
+    cursor: pointer;
+}
+
 .HeroMain>.HeroWrapper .left .btnContainer .getstarted .arrowRight {
     margin: 0px 0px 0px var(--spacing-sm);
     width: 10px;
