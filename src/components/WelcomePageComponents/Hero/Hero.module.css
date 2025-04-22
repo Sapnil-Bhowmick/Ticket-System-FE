@@ -1,0 +1,170 @@
+.HeroMain {
+    width: 100%;
+    /* border: 1px solid blue; */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.HeroMain>.HeroWrapper {
+    width: 100%;
+    max-width: var(--standard-width);
+    /* border: 1px solid black; */
+    padding: calc(var(--spacing-xl) * 2) 0px var(--spacing-md) 0px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: flex-start;
+}
+
+.HeroMain>.HeroWrapper .left {
+    width: 60%;
+    padding: calc(var(--spacing-xl) + var(--spacing-md)) 0px 0px 0px;
+    /* border: 1px solid blue; */
+
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: flex-start;
+}
+
+.HeroMain>.HeroWrapper .left h1 {
+    max-width: 666px;
+
+    font-family: var(--font-Barlow);
+    color: var(--text-primary);
+    font-size: 54px;
+    font-weight: 700;
+    line-height: 110%;
+    letter-spacing: -1px;
+}
+
+.HeroMain>.HeroWrapper .left p {
+    max-width: 623px;
+    margin: var(--spacing-md) 0px var(--spacing-md) 0px;
+
+    font-family: var(--font-Barlow);
+    color: var(--text-primary);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 140%;
+    letter-spacing: 0px;
+}
+
+.HeroMain>.HeroWrapper .btnContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.HeroMain>.HeroWrapper .left .btnContainer .getstarted {
+    width: 166px;
+    height: 49px;
+
+    border: none;
+    background-color: var(--button-bg-dark-1);
+    color: var(--text-btn);
+    border-radius: var(--border-radius-btn);
+
+    font-family: var(--font-Barlow);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 140%;
+    letter-spacing: 0px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.HeroMain>.HeroWrapper .left .btnContainer .getstarted .arrowRight {
+    margin: 0px 0px 0px var(--spacing-sm);
+    width: 10px;
+    height: 10px;
+
+    transition: transform 0.25s ease-in-out;
+}
+
+.HeroMain>.HeroWrapper .left .btnContainer .getstarted:hover .arrowRight {
+    transform: translateX(5px) scale(1.1);
+}
+
+
+.HeroMain>.HeroWrapper .left .btnContainer .watchVideo {
+    margin: 0px 0px 0px var(--spacing-lg);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.HeroMain>.HeroWrapper .left .btnContainer .watchVideo p {
+    margin: 0px 0px 0px var(--spacing-sm);
+
+    font-family: var(--font-Barlow);
+    color: var(--text-primary);
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 140%;
+    letter-spacing: 0px;
+}
+
+
+.HeroMain>.HeroWrapper .right {
+    width: 40%;
+    /* border: 1px solid red; */
+}
+
+.HeroMain > .HeroWrapper .right .HeroImgDiv {
+    width: 492.3px;
+    height: 577.25px;
+    /* overflow: hidden; */
+
+    /* border: 1px solid blue; */
+    transform: translateX(-60px);
+
+    position: relative;
+}
+
+.HeroMain > .HeroWrapper .right .HeroImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    z-index: -1;
+}
+
+.HeroMain > .HeroWrapper .right .bgLarge {
+    position: absolute;
+    top: -233px;
+    left: -163px;
+
+    z-index: -1;
+}
+
+.HeroMain > .HeroWrapper .right .bgSmall {
+    position: absolute;
+    top: -179px;
+    left: 174px;
+
+    z-index: -1;
+}
+
+.HeroMain > .HeroWrapper .right .card1 {
+    width: 285.36px;
+
+    position: absolute;
+    top: -49px;
+    right: -88px;
+}
+
+.HeroMain > .HeroWrapper .right .card2 {
+    position: absolute;
+    bottom: 72px;
+    right: -121px;
+}

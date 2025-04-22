@@ -1,0 +1,85 @@
+
+.footerMain {
+    width: 100%;
+    background-color: var(--bg-white);
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.footerMain > .footerWrapper {
+    width: 100%;
+    max-width: var(--standard-width);
+    /* border: 1px solid blue; */
+
+    position: relative;
+
+    padding: calc(var(--spacing-xl) + var(--spacing-sm)) 0px var(--spacing-sm) 0px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.footerMain > .footerWrapper > nav {
+    margin: 0px 0px 0px var(--spacing-xl);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.footerMain > .footerWrapper > nav > div p {
+    margin:0px 0px var(--spacing-md) 0px;
+
+    font-family: var(--font-Inter);
+    color: var(--text-footer);
+    font-weight: 500;
+    font-size: 17.16px;
+    line-height: 28px;
+    letter-spacing: 0px;
+}
+
+.footerMain > .footerWrapper > nav ul {
+    list-style: none;
+}
+
+.footerMain > .footerWrapper > nav > div {
+    /* border: 1px solid red; */
+    padding: 0px calc(var(--spacing-xl) * 1.5) var(--spacing-xl) 0px;
+    margin: 0px 20px 0px 0px;
+}
+
+.footerMain > .footerWrapper > nav > div:last-of-type {
+    margin: 0px 0px 0px 31px;
+}
+
+.footerMain > .footerWrapper > nav > div li {
+    margin: 0px 0px var(--spacing-sm) 0px;
+
+    font-family: var(--font-Inter);
+    color: var(--text-footer);
+    font-weight: 400;
+    font-size: 16.73px;
+    line-height: 28px;
+    letter-spacing: 0px;
+}
+
+
+
+.socialIcons {
+    display: flex;
+    flex-direction: row;
+
+    position: absolute;
+    bottom: 118px;
+    right: -56px;
+}
+
+.socialIcons > img {
+    margin: 0px 0px 0px var(--spacing-md);
+}

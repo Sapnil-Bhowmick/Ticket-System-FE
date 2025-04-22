@@ -1,0 +1,16 @@
+
+.WelcomeMain {
+    width:100%;
+    /* border: 1px solid red; */
+    background-color: var(--bg-welcome);
+}
+
+.WelcomeMain > .WelcomeWrapper {
+    width: 100%;
+    border: 1px solid black;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}

@@ -1,0 +1,21 @@
+
+.companyMain {
+    width: 100%;
+    background-color: var(--bg-welcomeCompanies);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.companyMain > .companyWrapper {
+    width: 100%;
+    max-width: var(--standard-width);
+    padding: var(--spacing-lg) 0px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+}

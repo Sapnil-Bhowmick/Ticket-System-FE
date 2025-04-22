@@ -1,0 +1,162 @@
+.AboutMain {
+    width: 100%;
+    /* border: 1px solid blue; */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.AboutMain > .AboutWrapper {
+    width: 100%;
+    padding: calc(var(--spacing-xl) + var(--spacing-md)) 0px 0px 0px;
+    max-width: var(--standard-width);
+    /* border: 1px solid black; */
+    /* padding: var(--spacing-xl) 0px var(--spacing-md) 0px; */
+}
+
+
+.AboutMain > .AboutWrapper .aboutDescDic {
+    /* border: 1px solid red; */
+    
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.AboutMain > .AboutWrapper .aboutDescDic .about {
+    /* border: 1px solid rgb(85, 70, 70); */
+    max-width: 725px;
+    text-align: center;
+}
+
+.AboutMain > .AboutWrapper .aboutDescDic .about h2 {
+    font-family: var(--font-Barlow);
+    color: var(--text-primary);
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 120%;
+    letter-spacing: 0px;
+}
+
+.AboutMain > .AboutWrapper .aboutDescDic .about p {
+    margin: var(--spacing-md) 0px 0px 0px;
+
+    font-family: var(--font-Barlow);
+    color: var(--text-primary);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 140%;
+    letter-spacing: 0px;
+}
+
+.AboutMain > .AboutWrapper .features {
+    margin: var(--spacing-lg) 0px 0px 0px;
+    border-radius: var(--border-radius-about);
+    border: 2px solid rgba(111,164,215,0.16);
+    background-color: var(--bg-white);
+    padding: var(--spacing-lg) var(--spacing-md) var(--spacing-md) var(--spacing-lg);
+
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.AboutMain > .AboutWrapper .features > div {
+    width: 50%;
+    /* border: 1px solid red; */
+}
+
+.AboutMain > .AboutWrapper .features .left {
+    padding: var(--spacing-xl) 0px 0px 0px;
+}
+
+.AboutMain > .AboutWrapper .features .platform h3 {
+    font-family: var(--font-Barlow);
+    color: var(--text-primary);
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 140%;
+    letter-spacing: 0px;
+}
+
+.AboutMain > .AboutWrapper .features .platform p {
+    max-width: 509px;
+
+    font-family: var(--font-Barlow);
+    color: #394B59;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 0px;
+}
+
+.AboutMain > .AboutWrapper .features .info {
+    margin: var(--spacing-lg) 0px 0px 0px;
+}
+
+.AboutMain > .AboutWrapper .features .info .close h4{
+    font-family: var(--font-Barlow);
+    color: #394B59;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 140%;
+    letter-spacing: -1px;
+}
+
+.AboutMain > .AboutWrapper .features .info .close p{
+    margin: var(--spacing-sm) 0px 0px 0px;
+
+    font-family: var(--font-Barlow);
+    color: #394B59;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 0px;
+}
+
+.AboutMain > .AboutWrapper .features .info .nurture h4{
+    margin: var(--spacing-md) 0px 0px 0px;
+
+    font-family: var(--font-Barlow);
+    color: #394B59;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 140%;
+    letter-spacing: -1px;
+}
+
+.AboutMain > .AboutWrapper .features .info .nurture p{
+    margin: var(--spacing-sm) 0px 0px 0px;
+
+    font-family: var(--font-Barlow);
+    color: #394B59;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: 0px;
+}
+
+
+.AboutMain > .AboutWrapper .features .aboutLogo {
+    position: relative;
+    transform: translateX(60px);
+    padding: 40px 0px 0px 0px;
+}
+
+.AboutMain > .AboutWrapper .features .aboutLogo .socialIcon {
+    position: absolute;
+    top: 16px;
+    left: 153px;
+}
+
+.AboutMain > .AboutWrapper .features .aboutLogo .bg {
+    position: absolute;
+    top: -49px;
+    left: -17px;
+    z-index: -1;
+}

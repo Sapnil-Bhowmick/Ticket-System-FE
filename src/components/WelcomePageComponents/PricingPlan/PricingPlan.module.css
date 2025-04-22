@@ -1,0 +1,205 @@
+.PricingPlanMain {
+    width: 100%;
+    /* border: 1px solid black; */
+
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.PricingPlanMain>.PricingPlanWrapper {
+    width: 100%;
+    max-width: var(--standard-width);
+    /* border: 1px solid red; */
+    padding: calc(var(--spacing-xl) + var(--spacing-md)) 0px calc(var(--spacing-xl) + var(--spacing-sm)) 0px;
+}
+
+.PricingPlanMain>.PricingPlanWrapper>.PricingPlanDescDiv {
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.PricingPlanMain>.PricingPlanWrapper>.PricingPlanDescDiv .PricingPlanDesc {
+    /* border: 1px solid black; */
+    text-align: center;
+}
+
+.PricingPlanMain>.PricingPlanWrapper>.PricingPlanDescDiv .PricingPlanDesc h2 {
+    font-family: var(--font-Barlow);
+    color: var(--text-primary);
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 120%;
+    letter-spacing: 0px;
+}
+
+.PricingPlanMain>.PricingPlanWrapper>.PricingPlanDescDiv .PricingPlanDesc p {
+    max-width: 625px;
+    margin: var(--spacing-md) 0px 0px 0px;
+
+    font-family: var(--font-Barlow);
+    color: var(--text-primary);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 140%;
+    letter-spacing: 0px;
+}
+
+
+.PricingPlanMain>.PricingPlanWrapper .PricingPlanCards {
+    width: 100%;
+    /* border: 1px solid blue; */
+    margin: calc(var(--spacing-lg) + var(--spacing-sm)) 0px 0px 0px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
+.PricingPlanMain>.PricingPlanWrapper .PricingPlanCards>article {
+    width: calc(100% / 2);
+    padding: calc(var(--spacing-md) * 2 + 4px);
+    border-radius: var(--border-radius-pricingPlan);
+    border: 2px solid rgba(47, 95, 139, 0.1);
+    background-color: var(--bg-white);
+    box-shadow: var(--boxShadow-priceCard);
+
+    min-height: 709px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.PricingPlanMain>.PricingPlanWrapper .PricingPlanCards>article:first-of-type {
+    margin: 0px 20px 0px 0px;
+}
+
+.PricingPlanMain>.PricingPlanWrapper .PricingPlanCards>article>h3 {
+    font-family: var(--font-Barlow);
+    color: var(--text-primary);
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 140%;
+    letter-spacing: 0px;
+}
+
+
+.PricingPlanMain>.PricingPlanWrapper .PricingPlanCards>article>p {
+    margin: var(--spacing-md) 0px 0px 0px;
+
+    font-family: var(--font-Barlow);
+    color: var(--text-primary);
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 140%;
+    letter-spacing: 0px;
+}
+
+.PricingPlanMain>.PricingPlanWrapper .PricingPlanCards>article>span {
+    color: var(--text-pricing);
+    margin: var(--spacing-lg) 0px var(--spacing-md) 0px;
+
+    display: inline-block;
+
+    position: relative;
+
+    font-family: var(--font-Barlow);
+    color: var(--text-primary);
+    font-size: 54px;
+    font-weight: 700;
+    line-height: 140%;
+    letter-spacing: 0px;
+}
+
+.PricingPlanMain>.PricingPlanWrapper .PricingPlanCards .article1 > span::after {
+    content: "/monthly";
+    position: absolute;
+
+    bottom: 14px;
+    left: 117px;
+
+    font-family: var(--font-Barlow);
+    color: var(--text-monthly);
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 140%;
+    letter-spacing: 0px;
+}
+
+.PricingPlanMain>.PricingPlanWrapper .PricingPlanCards .article2 > span::after {
+    content: "/monthly";
+    position: absolute;
+
+    bottom: 14px;
+    left: 128px;
+
+    font-family: var(--font-Barlow);
+    color: var(--text-monthly);
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 140%;
+    letter-spacing: 0px;
+}
+
+
+.PricingPlanMain>.PricingPlanWrapper .PricingPlanCards>article .planFeatures>span {
+    font-family: var(--font-Barlow);
+    color: var(--text-primary);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 140%;
+    letter-spacing: 0px;
+}
+
+.PricingPlanMain>.PricingPlanWrapper .PricingPlanCards>article .planFeatures .features {
+    margin: var(--spacing-md) 0px 0px 0px;
+}
+
+.PricingPlanMain>.PricingPlanWrapper .PricingPlanCards>article .planFeatures .features>div {
+    margin: 0px 0px var(--spacing-md) 0px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.PricingPlanMain>.PricingPlanWrapper .PricingPlanCards>article .planFeatures .features span {
+    display: block;
+
+    margin: 0px 0px 0px var(--spacing-md);
+
+    font-family: var(--font-Barlow);
+    color: var(--text-primary);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 140%;
+    letter-spacing: 0px;
+}
+
+.pricingBtn {
+    width: 100%;
+    border: 1px solid rgba(36, 71, 121, 0.4);
+    padding: var(--spacing-md) calc(var(--spacing-md) + var(--spacing-sm));
+    border-radius: 64px;
+    background-color: var(--bg-white);
+
+    margin-top: auto;
+
+    font-family: var(--font-Barlow);
+    color: var(--text-priceBtn);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 140%;
+    letter-spacing: 0px;
+}
+
+.pricingBtn:hover {
+    cursor: pointer;
+}

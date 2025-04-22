@@ -9,9 +9,14 @@ import Customization from "./pages/CustomizationPage/Customization.jsx"
 import ContactCenter from "./pages/ContactCenterPage/ContactCenter.jsx"
 import Analytics from "./pages/AnalyticsPage/Analytics.jsx"
 import NotFound from "./pages/NotFound/NotFound.jsx";
-
+import Welcome from "./pages/WelcomePage/Welcome.jsx"
 
 const AppRouter = createBrowserRouter([
+    {
+        path: "/Home",
+        element: <Welcome />
+    } ,
+
     {
         path: "/Login",
         element: <Login />
