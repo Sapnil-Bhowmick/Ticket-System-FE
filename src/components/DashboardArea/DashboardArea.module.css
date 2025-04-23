@@ -1,0 +1,12 @@
+.dashboardAreaMain {
+    width: 100%;
+    height: 100%;
+
+    border: 1px solid red;
+}
+
+
+.dashboardAreaMain > .dashboardAreaWrapper {
+    width: 100%;
+    padding: calc(var(--spacing-lg) - 10px) var(--spacing-md) var(--spacing-md) var(--spacing-md);
+}

@@ -10,11 +10,11 @@ const Nav = () => {
       <div className={styles.navWrapper}>
         <img src={logo} alt="Logo" className={styles.logo}/>
         <div className={styles.buttonDiv}>
-            <div className={styles.login}>
-                Login
-            </div>
+            {/* <div className={styles.login}> */}
+                <Link to = "/login" className={styles.loginLink}>Login</Link>
+            {/* </div> */}
             <button className={styles.signup}>
-                Sign up
+                <Link to="/register" className={styles.signUpLink}>Sign up</Link>
             </button>
         </div>
       </div>

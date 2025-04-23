@@ -41,12 +41,13 @@ body {
   --button-bg-dark-2: #184E7F;
   --button-bg-light: #FFFFFF;
 
-  --bg-user-login_register: #C3C3C3;
+  --bg-user-login_register: rgba(17,17,17,0.25);
 
   /** Border Radius */
   --border-radius-btn: 8px;
   --border-radius-about: 24px;
   --border-radius-pricingPlan: 24px;
+  --border-radius-inputField: 8.46px;
 
   /** ----------- Font Color ----------- */
   --text-primary: #30404D;

@@ -1,9 +1,21 @@
+import DashboardArea from '../../components/DashboardArea/DashboardArea'
+import SidebarNav from '../../components/SidebarNav/SidebarNav'
 import styles from './Dashboard.module.css'
+
+
 
 const Dashboard = () => {
   return (
-    <div>
-        Dashboard Page
+    <div className={styles.dashboardMain}>
+        <div className={styles.dashboardWrapper}>
+          <div className={styles.dasboardSidebar}>
+            <SidebarNav />
+          </div>
+
+          <div className={styles.dashboardTicketArea}>
+            <DashboardArea />
+          </div>
+        </div>
     </div>
   )
 }

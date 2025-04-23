@@ -1,0 +1,27 @@
+
+.dashboardMain {
+    width: 100%;
+}
+
+.dashboardMain > .dashboardWrapper {
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.dashboardMain > .dashboardWrapper .dasboardSidebar {
+    flex:1;
+    height: 100vh;
+    border-right: 1px solid #E7E7E7;
+
+    background-color: var(--bg-sidebar);
+}
+
+.dashboardMain > .dashboardWrapper .dashboardTicketArea {
+    flex: 13;
+    height: 100vh;
+    /* border: 1px solid rgb(95, 43, 190); */
+}
