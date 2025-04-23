@@ -9,7 +9,7 @@ const Dashboard = () => {
     <div className={styles.dashboardMain}>
         <div className={styles.dashboardWrapper}>
           <div className={styles.dasboardSidebar}>
-            <SidebarNav />
+            <SidebarNav activePage = "Dashboard" />
           </div>
 
           <div className={styles.dashboardTicketArea}>

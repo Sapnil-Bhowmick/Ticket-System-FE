@@ -10,7 +10,7 @@ import teamIcon from "../../assets/icons/team-icon.svg"
 
 import profileIcon from "../../assets/icons/profileIcon.svg"
 
-const SidebarNav = () => {
+const SidebarNav = ({activePage}) => {
     return (
         <nav className={styles.sidebarMain}>
             <div className={styles.sidebarWrapper}>
@@ -18,27 +18,27 @@ const SidebarNav = () => {
                 <img src={dashboardLogo} alt="Logo" />
                 <div>
                     <img src={dashboardIcon} alt="Go To Dashboard" />
-                    <span>Dashboard</span>
+                    {activePage === "Dashboard" && <span>Dashboard</span>}
                 </div>
                 <div>
                     <img src={contactCenterIcon} alt="Go To Contact Center" />
-                    <span>Contact Center</span>
+                    {activePage === "ContactCener" && <span>Contact Center</span>}
                 </div>
                 <div>
                     <img src={analyticsIcon} alt="Go To Analytics" />
-                    <span>Analytics</span>
+                    {activePage === "Analytics" && <span>Analytics</span>}
                 </div>
                 <div>
                     <img src={chatbotIcon} alt="Go To Customization" />
-                    <span>Chat bot</span>
+                    {activePage === "ChatBot" && <span>Chat bot</span>}
                 </div>
                 <div>
                     <img src={teamIcon} alt="Go To Teams" />
-                    <span>Team</span>
+                    {activePage === "Team" && <span>Team</span>}
                 </div>
                 <div>
                     <img src={settingsIcon} alt="Go To Setttings" />
-                    <span>Seting</span>
+                    {activePage === "Settings" && <span>Seting</span>}
                 </div>
 
                 <div className={styles.settings}>

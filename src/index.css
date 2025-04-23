@@ -19,6 +19,8 @@ body {
   --bg-white: #FFFFFF;
   --bg-welcomeCompanies: #EBF1F9;
 
+  --bg-ticket: #FEFEFE;
+
   --bg-Inactive-modal: rgba(149, 149, 149, 0.2);
   --bg-modal-member: #FFFFFF;
   --bg-modal-delete: #FAFBFC;
@@ -45,9 +47,11 @@ body {
 
   /** Border Radius */
   --border-radius-btn: 8px;
+  --border-radius-ticket: 4px;
   --border-radius-about: 24px;
   --border-radius-pricingPlan: 24px;
   --border-radius-inputField: 8.46px;
+  --border-radius-chat: 27px;
 
   /** ----------- Font Color ----------- */
   --text-primary: #30404D;
@@ -79,7 +83,7 @@ body {
   --text-tabHeading: #888888;
 
   /* Ticket */
-  --text-ticket-address: #2E2C34;
+  --text-ticket-No: #2E2C34;
   --text-ticket-content: #000000;
   --text-ticket-createdTime: #84818A;
   --text-ticket-elapsedTime: #000000;
