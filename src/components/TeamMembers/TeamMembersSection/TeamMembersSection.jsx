@@ -7,12 +7,15 @@ import upDown from "../../../assets/icons/up-down.svg"
 import circlePlus from "../../../assets/icons/circle-plus.svg"
 
 
+
 import { useState } from "react"
 import Modal from "../Modal/Modal"
+import DeletePopup from "../DeletePopup/DeletePopup"
 
 const TeamMembersSection = ({ setIsModalOpen, isModalOpen }) => {
 
   const [isEditMember, setIsEditMember] = useState(false)
+  const [memberId , setMemberId] = useState(null)
 
   const handleEdit = () => {
     setIsEditMember(true)
@@ -41,26 +44,33 @@ const TeamMembersSection = ({ setIsModalOpen, isModalOpen }) => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td className={styles.avatarcell}>
-                  <img src={avatar} alt="avatar" className="avatar" />
-                </td>
-                <td>Joe Doe</td>
-                <td>+1 (000) 000-0000</td>
-                <td>example@gmail.com</td>
-                <td className={styles.roleType}>Admin</td>
-                <td className={styles.actions}>
-                  <img src={editIcon} alt="Edit" className={styles.editIcon} onClick={() => handleEdit()} />
-                  <img src={deleteIcon} alt="Delete" className={styles.deleteIcon} />
-                </td>
-              </tr>
+              {
+                new Array(5).fill(0).map((member, index) => {
+                  return (
+                    <tr key={index}>
+                      <td className={styles.avatarcell}>
+                        <img src={avatar} alt="avatar" className="avatar" />
+                      </td>
+                      <td>Joe Doe</td>
+                      <td>+1 (000) 000-0000</td>
+                      <td>example@gmail.com</td>
+                      <td className={styles.roleType}>Admin</td>
+                      <td className={styles.actions}>
+                        <img src={editIcon} alt="Edit" className={styles.editIcon} onClick={() => handleEdit()} />
+                        {memberId === index && <DeletePopup setMemberId={setMemberId}/>}
+                        <img src={deleteIcon} alt="Delete" className={styles.deleteIcon} onClick={() => setMemberId(index)}/>
+                      </td>
+                    </tr>
+                  )
+                })
+              }
             </tbody>
 
 
             <button className={styles.addMemberBtn}
               onClick={() => {
-                setIsEditMember(false) 
-                setIsModalOpen(!isModalOpen) 
+                setIsEditMember(false)
+                setIsModalOpen(!isModalOpen)
               }}
             >
               <img src={circlePlus} alt="" />
