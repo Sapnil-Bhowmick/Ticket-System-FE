@@ -16,8 +16,8 @@ const Settings = () => {
   const styleObj = (index) => {
     const infoVal = showInfo[index]
     return {
-      bottom: !infoVal ? "6px" : "-45px",
-      right: !infoVal ? "-36px" : "-280px"
+      bottom: !infoVal ? "6px" : "-42px",
+      right: !infoVal ? "-36px" : "-287px"
     }
   }
 
