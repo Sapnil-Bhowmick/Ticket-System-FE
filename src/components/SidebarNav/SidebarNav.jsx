@@ -11,6 +11,9 @@ import teamIcon from "../../assets/icons/team-icon.svg"
 import profileIcon from "../../assets/icons/profileIcon.svg"
 
 const SidebarNav = ({activePage}) => {
+
+    console.log("activePage" , activePage)
+
     return (
         <nav className={styles.sidebarMain}>
             <div className={styles.sidebarWrapper}>
