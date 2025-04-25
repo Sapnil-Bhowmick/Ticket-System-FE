@@ -1,0 +1,165 @@
+
+.infoMain {
+    width: 100%;
+    height: 100%;
+}
+
+.infoMain > .infoWrapper {
+    width: 100%;
+    height: 100%;
+
+    padding: var(--spacing-sm);
+}
+
+.userAvatar {
+    display: flex;
+    align-items: center;
+}
+
+.userAvatar > span {
+    margin: 0px 0px 0px var(--spacing-sm);
+
+    font-family: var(--font-Inter);
+    color: #939598;
+    font-size: 13.1px;
+    font-weight: 400;
+    line-height: auto;
+    letter-spacing: 0px;
+}
+
+
+.userDetails {
+    margin: var(--spacing-md) 0px 0px 0px;
+}
+
+.userDetails p {
+    margin: 0px 0px var(--spacing-sm) 0px ;
+
+    font-family: var(--font-Inter);
+    color: var(--text-contactCenter-detailsHeader);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: auto;
+    letter-spacing: 0px;
+}
+
+.userDetails > div {
+    height: 38px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    font-family: var(--font-Inter);
+    color: var(--text-contactCenter-detailsText-name);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: auto;
+    letter-spacing: 0px;
+}
+
+.userDetails > div > img {
+    margin: 0px var(--spacing-md) 0px var(--spacing-sm);
+}
+
+.userDetails div {
+    width: 100%;
+    border-radius: var(--border-radius-contactCenter-pills);
+    border: 1px solid #D1D6DA; 
+
+    margin: 0px 0px var(--spacing-sm) 0px;
+}
+
+.teamMembers {
+    margin: var(--spacing-md) 0px 0px 0px;
+}
+
+.teamMembers > p {
+    margin: 0px 0px var(--spacing-sm) 0px ;
+
+    font-family: var(--font-Inter);
+    color: var(--text-contactCenter-detailsHeader);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: auto;
+    letter-spacing: 0px;
+}
+
+.teamMembers > .admin {
+    height: 38px;
+
+    position: relative;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    font-family: var(--font-Inter);
+    color: var(--text-contactCenter-detailsText-name);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: auto;
+    letter-spacing: 0px;
+
+    width: 100%;
+    border-radius: var(--border-radius-contactCenter-pills);
+    border: 1px solid #D1D6DA; 
+
+    margin: 0px 0px var(--spacing-md) 0px;
+
+    position: relative;
+}
+
+.teamMembers .admin .avatar {
+    margin: 0px var(--spacing-md) 0px var(--spacing-sm);
+}
+
+.teamMembers .admin .downArrow {
+    position: absolute;
+    cursor: pointer;
+
+    top: 14px;
+    right: 12px;
+}
+
+
+.myTeamMembers {
+    border-radius: var(--border-radius-contactCenter-pills);
+    border: 1px solid #D1D6DA;
+}
+
+.myTeamMembers > .member {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    padding: 3px 0px;
+    border-bottom: 1px solid #D1D6DA;
+
+    font-family: var(--font-Inter);
+    color: var(--text-contactCenter-detailsText-name);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0px;
+}
+
+.myTeamMembers > .member:hover {
+    cursor: pointer;
+}
+
+.myTeamMembers > .member:last-of-type {
+    border-bottom: none;
+}
+
+.myTeamMembers > .member > img {
+    margin: 0px var(--spacing-md) 0px calc(var(--spacing-sm) + 5px);
+}
+
+.status {
+    margin: 0px 0px 0px var(--spacing-sm);
+}
+
+/* .teamMembers > .admin */

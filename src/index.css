@@ -52,6 +52,7 @@ body {
   --border-radius-pricingPlan: 24px;
   --border-radius-inputField: 8.46px;
   --border-radius-chat: 27px;
+  --border-radius-contactCenter-pills: 13px;
 
   /** ----------- Font Color ----------- */
   --text-primary: #30404D;

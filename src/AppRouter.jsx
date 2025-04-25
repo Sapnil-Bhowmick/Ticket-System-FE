@@ -13,7 +13,7 @@ import Welcome from "./pages/WelcomePage/Welcome.jsx"
 
 const AppRouter = createBrowserRouter([
     {
-        path: "/Home",
+        path: "/",
         element: <Welcome />
     } ,
 

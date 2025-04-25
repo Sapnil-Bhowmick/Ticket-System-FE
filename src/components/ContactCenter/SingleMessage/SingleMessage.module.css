@@ -1,0 +1,51 @@
+
+.messageText {
+    width: 100%;
+    /* border: 1px solid red; */
+    margin: 0px 0px var(--spacing-md) 0px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.messageText > .message {
+    /* border: 1px solid green; */
+    max-width: 70%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items:flex-start;
+}
+
+.messageText > .message .info {
+    margin: 0px 0px 0px var(--spacing-sm) ;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    font-family: var(--font-Inter);
+    color: var(--text-contactCenter-chatTime);
+    font-weight: 400;
+    line-height: auto;
+    letter-spacing: 0px;
+}
+
+.messageText > .message .info .chatNo {
+    color: var(--text-contactCenter-chatNo);
+    width:100%;
+    font-size: 13.5px;
+}
+
+
+.messageText > .message .info .query {
+    color: var(--text-contactCenter-chatQuery);
+    font-size: 14px;
+    margin: 5px 0px 0px 0px;
+
+    text-align: justify;
+}

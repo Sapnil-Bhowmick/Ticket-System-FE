@@ -29,13 +29,15 @@
 .contactcenterMain > .contactcenterWrapper .messageSection {
     flex: 6;
     height: 100vh;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
+    border-left: 1px solid #E7E7E7;
+    border-right: 1px solid #E7E7E7;
 }
 
 .contactcenterMain > .contactcenterWrapper .infoSection {
     flex: 4;
     height: 100vh;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 
