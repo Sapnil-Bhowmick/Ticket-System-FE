@@ -1,0 +1,168 @@
+
+.settingsMain {
+    width: 100%;
+}
+
+.settingsMain > .settingsWrappper {
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.settingsMain > .settingsWrappper .settingsSidebar {
+    flex:1;
+    height: 100vh;
+    border-right: 1px solid #E7E7E7;
+
+    background-color: var(--bg-sidebar);
+}
+
+.settingsMain > .settingsWrappper .formArea {
+    flex: 13;
+    height: 100vh;
+    /* border: 1px solid rgb(95, 43, 190); */
+    padding: var(--spacing-md);
+}
+
+.saveBtn {
+    position: absolute;
+    right: 29px;
+    bottom: 21px;
+
+    padding: 14px 74px;
+    border-radius: 15px;
+    background-color: var(--button-bg-dark-2);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: var(--font-Poppins);
+    color: #FAFBFC;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: auto;
+    letter-spacing: 0px;
+
+    cursor: pointer;
+}
+
+
+.editDiv {
+    margin: var(--spacing-xl) 0px 0px 0px;
+    border-radius: 25px;
+    background-color: #FAFBFC;
+
+    position: relative;
+
+    padding: calc(var(--spacing-md) + 10px) var(--spacing-md) var(--spacing-xl) calc(var(--spacing-md) + 10px);
+}
+
+.title {
+    position: relative;
+    /* border: 1px solid red; */
+}
+
+.title > span::after {
+    content: "";
+    width: 100px;
+    height: 3px;
+    background-color: #184E7F;
+
+    position: absolute;
+    bottom: -5px;
+    left: 0px;
+}
+
+.title > span {
+    padding: 0px 0px 0px 12px;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    background-color: #737373;
+
+    position: absolute;
+    bottom: -5px;
+    left: 0px;
+}
+
+
+.formContainer {
+    margin: var(--spacing-lg) 0px 0px calc(var(--spacing-md) + 6px);
+}
+
+.formContainer > div {
+    position: relative;
+
+    width: 100%;
+    max-width: 500px;
+    /* border: 1px solid red; */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.formContainer > div > .infoDiv {
+    position: absolute;
+    bottom: -45px;
+    right: -280px;
+
+    cursor: pointer;
+}
+
+.formContainer > div > .infoDiv  > .info {
+    border-radius: 13px;
+    background-color: #F3F3F3;
+    box-shadow: 0px 4px 32.35px 0px rgba(0,0,0,0.25);
+
+    padding: var(--spacing-md);
+
+    font-family: var(--font-Inter);
+    color: #7C7C7C;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: auto;
+    letter-spacing: 0px;
+}
+
+.formContainer > div > label {
+    font-family: var(--font-Poppins);
+    color: var(-text-settings-label);
+    font-size: 17.28px;
+    font-weight: 400;
+    line-height: auto;
+    letter-spacing: 0px;
+    margin: 0px 0px var(--spacing-sm) 0px;
+}
+
+.formContainer > div > input {
+    width: 100%;
+    
+    border: 1px solid #3E3E3E;
+    border-radius: 11.24px;
+    padding: var(--spacing-sm);
+    outline: none;
+    background-color: #FAFBFC;
+
+    font-family: var(--font-Poppins);
+    color: #000000;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: auto;
+    letter-spacing: 0px;
+}
+
+.formContainer > div > input::placeholder {
+    color:#e6e4e4
+}
+
+.formContainer > div {
+    margin: 0px 0px var(--spacing-md) 0px;
+}
