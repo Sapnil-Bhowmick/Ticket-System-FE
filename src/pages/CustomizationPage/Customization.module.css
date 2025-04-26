@@ -24,4 +24,571 @@
     flex: 13;
     height: 100vh;
     /* border: 1px solid rgb(95, 43, 190); */
+    padding: calc(var(--spacing-md) + 8px) var(--spacing-lg) var(--spacing-md)  var(--spacing-md) ;
+
+    overflow: auto;
+}
+
+.customizationArea > p {
+    /* margin: calc(var(--spacing-md) + 8px) var(--spacing-lg) var(--spacing-md)  var(--spacing-md) ; */
+
+    font-family: var(--font-Inter);
+    color: #6A6B70;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: auto;
+    letter-spacing: 0px;
+}
+
+
+.custom_1 {
+    /* border: 1px solid red; */
+    margin: var(--spacing-md) 0px 0px 0px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.preview {
+    width: 100%;
+    max-width: 376px;
+    border: 1px solid #EEEEEE;
+    margin: 0px 0px 0px calc(var(--spacing-xl) * 3) ;
+    /* border: 1px solid rgb(0, 255, 34); */
+}
+
+.chatbotHeader {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    background-color: #33475b;
+    padding: var(--spacing-sm);
+}
+
+.chatbotHeader > span {
+    margin: 0px 0px 0px calc(var(--spacing-sm) + 5px) ;
+
+    font-family: var(--font-Inter);
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: 0px;
+}
+
+.chatbotHeader > .imgDiv {
+    position: relative;
+}
+
+.chatbotHeader > .imgDiv > .active {
+    width: 11px;
+    height: 11px;
+    background-color: #00BDA5;
+
+    position: absolute;
+
+    border-radius: 50%;
+    bottom: 7px;
+    right: -2px;
+    border: 1px solid #fff;
+}
+
+
+.chatbotBody {
+    /* border: 1px solid blue; */
+
+    padding: var(--spacing-sm);
+    background-color: #EEEEEE;
+}
+
+.chatbotBody > .messageDiv {
+    width: 100%;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.chatbotBody > .messageDiv > .message {
+    margin: 0px 0px 0px var(--spacing-sm);
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+
+.chatbotBody > .messageDiv > img {
+    width: 32px;
+    height: 32px;
+}
+
+.chatbotBody > .messageDiv > .message > span {
+    width: 100%;
+    max-width: 231px;
+    border-radius: 9px;
+    background-color: #fff;
+    padding: var(--spacing-sm);
+
+    font-family: var(--font-Poppins);
+    color: #000000;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 13px;
+    letter-spacing: 0px;
+
+    /* border: 1px solid red; */
+}
+
+.chatbotBody > .messageDiv > .message > span:last-child {
+    margin: var(--spacing-sm) 0px 0px 0px;
+}
+
+
+.chatbotBody > .formDivMain {
+    width: 100%;
+    margin: var(--spacing-lg) 0px 0px 0px;
+
+    display: flex;
+    justify-content: flex-end;
+}
+
+.formDivMain > .form {
+    width: 100%;
+    max-width: 280px;
+    /* border: 1px solid red;  */
+    border-radius: 16.13px;
+    background-color: #fff;
+
+    padding: var(--spacing-md) var(--spacing-md) var(--spacing-lg) var(--spacing-md);
+}
+
+.formDivMain > .form > p {
+    margin: 0px 0px calc(var(--spacing-sm) + 5px) 0px;
+
+    font-family: var(--font-Poppins);
+    color: #000000;
+    font-size: 9.12px;
+    font-weight: 500;
+    line-height: 9.1px;
+    letter-spacing: 0px;
+}
+
+.formDivMain > .form > div {
+    width: 100%;
+}
+
+.formDivMain > .form > div > p {
+    font-family: var(--font-Poppins);
+    color: #505050;
+    font-size: 9.12px;
+    font-weight: 500;
+    line-height: 9.1px;
+    letter-spacing: 0px;
+}
+
+.formDivMain > .form > div > span {
+    font-family: var(--font-Poppins);
+    margin: var(--spacing-sm) 0px 0px 0px;
+
+    width: 100%;
+    border-bottom: 1px solid #C3C3C3;
+    padding: 0px 0px 5px 0px ;
+
+    display: block;
+
+    color: #000000;
+    font-size: 11.22px;
+    font-weight: 500;
+    line-height: 9.1px;
+    letter-spacing: 0px;
+}
+
+.formDivMain > .form > div {
+    margin: 0px 0px var(--spacing-sm) 0px;
+}
+
+
+.formDivMain > .form > .btnDiv {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    margin: var(--spacing-md) 0px 0px 0px;
+}
+
+.formDivMain > .form > .btnDiv > button {
+    width: 100%;
+    max-width: 203px;
+    border: none;
+
+    border-radius: 9.12px;
+    background-color: var(--button-bg-dark-2);
+    padding: var(--spacing-sm) 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: var(--font-Inter);
+    color: #fff;
+    font-size: 11.22px;
+    font-weight: 600;
+    line-height: 16.8px;
+    letter-spacing: 0px;
+
+    border: none;
+    /* cursor: pointer; */
+}
+
+
+.chatbotFooter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: var(--spacing-md);
+}
+
+.chatbotFooter  > span {
+    font-family: var(--font-Inter);
+    color: #8498B6;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: 0px;
+}
+
+/* .chatbotFooter  > img {
+    cursor: pointer;
+} */
+
+
+
+.cutomizationContainer {
+    /* border: 1px solid red; */
+
+    width: 100%;
+    max-width: 400px;
+    background-color: #fff;
+}
+
+
+
+.cutomizationContainer > .header {
+    font-family: var(--font-Poppins);
+    color: #000000;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 13px;
+    letter-spacing: 0px;
+
+    box-shadow: var(--boxShadow-popup_modal_info);
+    border-radius: 23px;
+
+    /* border: 1px solid red; */
+    padding: calc(var(--spacing-sm) + 15px) var(--spacing-sm) var(--spacing-md) calc(var(--spacing-sm) + 15px);
+}
+
+
+.header > .colorPickerHeader {
+    margin: var(--spacing-sm) 0px 0px 0px;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.header > .colorPickerHeader > span {
+    width: 48px;
+    height: 48px;
+
+    border: 1px solid #f0eeee;
+    border-radius: 50%;
+    margin: 0px var(--spacing-sm) 0px 0px;
+}
+
+.selectedColorHeader {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.selectedColorHeader  > .color{
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    border: 1px solid #f0eeee;
+}
+
+.selectedColorHeader > .code {
+    margin: 0px 0px 0px var(--spacing-sm);
+
+    background-color: #F6F7F5;
+    border-radius: 9px;
+    height: 48px;
+
+    width: 100%;
+    padding: 0px 0px 0px calc(var(--spacing-sm) + 5px);
+    max-width: 231px;
+
+    font-family: var(--font-Poppins);
+    color: #000000;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 55.5px;
+    letter-spacing: 0px;
+}
+
+.cutomizationContainer .colorPickerHeader {
+    margin: var(--spacing-md) 0px;
+}
+
+
+
+.background {
+    margin: var(--spacing-md) 0px;
+
+    padding: calc(var(--spacing-sm) + 5px) var(--spacing-sm) var(--spacing-sm) calc(var(--spacing-sm) + 5px);
+}
+
+
+.cutomizationContainer > .message {
+    width: 100%;
+    max-width: 400px;
+
+    /* border: 1px solid blue; */
+    border-radius: 23px;
+    box-shadow: var(--boxShadow-popup_modal_info);
+    padding: calc(var(--spacing-sm) + 15px) var(--spacing-sm) var(--spacing-md) calc(var(--spacing-sm) + 15px);
+}
+
+
+.cutomizationContainer > .header > p  , .cutomizationContainer > .message > p{
+    font-family: var(--font-Poppins);
+    color: #000000;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 13px;
+    letter-spacing: 0px;
+}
+
+
+.cutomizationContainer > .message > .messageDiv {
+    margin: var(--spacing-md) 0px 0px 0px;
+}
+
+.cutomizationContainer > .message > .messageDiv > div {
+    margin: 0px 0px 0px var(--spacing-sm);
+    background-color: #F6F7F5;
+    border-radius: 9px;
+    height: 48px;
+    width: 100%;
+    padding: 0px 0px 0px calc(var(--spacing-sm) + 5px);
+    max-width: 231px;
+    font-family: var(--font-Poppins);
+    color: #000000;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 55.5px;
+    letter-spacing: 0px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: relative;
+}
+
+.cutomizationContainer > .message > .messageDiv > div > img {
+    position: absolute;
+    right: 10px;
+}
+
+.cutomizationContainer > .message > .messageDiv > input {
+    margin: 0px 0px 0px var(--spacing-sm);
+    background-color: #F6F7F5;
+    border-radius: 9px;
+    height: 48px;
+    width: 100%;
+    padding: 0px 0px 0px calc(var(--spacing-sm) + 5px);
+
+    max-width: 231px;
+    font-family: var(--font-Poppins);
+    color: #000000;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 55.5px;
+    letter-spacing: 0px;
+
+    outline: none;
+    border: none;
+}
+
+.cutomizationContainer > .message > .messageDiv > input , .cutomizationContainer > .message > .messageDiv > div {
+    margin: 0px 0px var(--spacing-sm) 0px;
+}
+
+
+
+
+
+/*& ------------------------------------------ */
+
+.custom_2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    margin: calc(var(--spacing-xl) * 3) 0px 0px 0px;
+}
+
+.custom_2 > .welcomeMessagePreview {
+    width: 240px;
+    /* border: 1px solid blue; */
+    margin: 0px 0px 0px calc(var(--spacing-xl) * 4);
+
+    padding: 24px 16px 16px 16px;
+    box-shadow: 0px 4px 20px 0px rgba(66,91,118,0.15);
+
+    position: relative;
+}
+
+.custom_2 > .welcomeMessagePreview > p {
+    font-family: var(--font-Poppins);
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0px;
+}
+
+.custom_2 > .welcomeMessagePreview > img {
+    position: absolute;
+    top: -28px;
+    left: calc(50% - 24px);
+}
+
+
+.customContainer > .formDivMain {
+    width: 100%;
+}
+
+
+.custom_2 > .customContainer {
+    /* border: 1px solid red; */
+    width: 100%;
+    max-width: 400px;
+}
+
+.custom_2  > .customContainer > .formDivMain > .form {
+    max-width: 100%;
+}
+
+.custom_2  > .customContainer > .formDivMain > .form input {
+    margin: var(--spacing-sm) 0px 0px 0px;
+    width: 100%;
+    border-bottom: 1px solid #C3C3C3;
+    padding: 0px 0px 3px 0px;
+
+    display: block;
+
+    font-family: var(--font-Poppins);
+    color: #000000;
+    font-size: 11.22px;
+    font-weight: 500;
+    line-height: 9.1px;
+    letter-spacing: 0px;
+
+    outline: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+.custom_2  > .customContainer > .formDivMain >  div {
+    box-shadow: var(--boxShadow-popup_modal_info);
+
+}
+
+
+.welcomeMessageDiv {
+    background-color: #fff;
+    padding: calc(var(--spacing-md) * 1.5) var(--spacing-sm) var(--spacing-sm) calc(var(--spacing-sm) + 5px);
+    border-radius: 23px;
+    margin: var(--spacing-md) 0px;
+    box-shadow: var(--boxShadow-popup_modal_info);
+}
+
+
+.welcomeMessageDiv > p {
+    font-family: var(--font-Poppins);
+    color: #000000;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 13px;
+    letter-spacing: 0px;
+}
+
+.welcomeMessageDiv > div {
+    border-radius: 9px;
+    background-color: #F6F7F5;
+    margin: var(--spacing-lg) 0px 0px 0px;
+    padding: var(--spacing-lg) var(--spacing-md) var(--spacing-md) var(--spacing-sm);
+
+    position: relative;
+}
+
+.welcomeMessageDiv > div > p {
+    max-width: 280px;
+
+    font-family: var(--font-Poppins);
+    color: var(--text-priceBtn);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0px;
+}
+
+.welcomeMessageDiv > div > img {
+    position: absolute;
+    
+    top: 50%;
+    right: 11px;
+}
+
+.welcomeMessageDiv > div .count {
+    position: absolute;
+
+    top: 5px;
+    right: 20px;
+    
+    font-family: var(--font-Poppins);
+    color: #838383;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0px;
+}
+
+.welcomeMessageDiv input {
+    margin: var(--spacing-lg) 0px 0px 0px;
+    background-color: #F6F7F5;
+    border-radius: 9px;
+    height: 48px;
+    width: 100%;
+    padding: 0px calc(var(--spacing-sm) + 5px) 0px calc(var(--spacing-sm) + 5px);
+    /* max-width: 231px; */
+    font-family: var(--font-Poppins);
+    color: #000000;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 55.5px;
+    letter-spacing: 0px;
+    outline: none;
+    border: none;
 }
