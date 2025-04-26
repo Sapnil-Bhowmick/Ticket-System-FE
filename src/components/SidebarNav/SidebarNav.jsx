@@ -9,44 +9,46 @@ import settingsIcon from "../../assets/icons/settings-icon.svg"
 import teamIcon from "../../assets/icons/team-icon.svg"
 
 import profileIcon from "../../assets/icons/profileIcon.svg"
+import { Link } from "react-router-dom"
+
 
 const SidebarNav = ({activePage}) => {
 
-    console.log("activePage" , activePage)
+    // console.log("activePage" , activePage)
 
     return (
         <nav className={styles.sidebarMain}>
             <div className={styles.sidebarWrapper}>
 
                 <img src={dashboardLogo} alt="Logo" />
-                <div>
+                <Link to="/Dashboard" className={styles.link}>
                     <img src={dashboardIcon} alt="Go To Dashboard" />
                     {activePage === "Dashboard" && <span>Dashboard</span>}
-                </div>
-                <div>
+                </Link>
+                <Link to="/ContactCenter" className={styles.link}>
                     <img src={contactCenterIcon} alt="Go To Contact Center" />
                     {activePage === "ContactCener" && <span>Contact Center</span>}
-                </div>
-                <div>
+                </Link>
+                <Link to="/Analytics" className={styles.link}>
                     <img src={analyticsIcon} alt="Go To Analytics" />
                     {activePage === "Analytics" && <span>Analytics</span>}
-                </div>
-                <div>
+                </Link>
+                <Link to="/Customization" className={styles.link}>
                     <img src={chatbotIcon} alt="Go To Customization" />
                     {activePage === "ChatBot" && <span>Chat bot</span>}
-                </div>
-                <div>
+                </Link>
+                <Link to="/TeamMembers" className={styles.link}>
                     <img src={teamIcon} alt="Go To Teams" />
                     {activePage === "Team" && <span>Team</span>}
-                </div>
-                <div>
+                </Link>
+                <Link to="/Settings" className={styles.link}>
                     <img src={settingsIcon} alt="Go To Setttings" />
                     {activePage === "Settings" && <span>Seting</span>}
-                </div>
+                </Link>
 
-                <div className={styles.settings}>
+                <Link className={styles.settings}>
                     <img src={profileIcon} alt="Go To Setttings" />
-                </div>
+                </Link>
             </div>
 
         </nav >

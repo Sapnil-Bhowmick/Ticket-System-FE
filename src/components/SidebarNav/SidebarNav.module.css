@@ -17,8 +17,9 @@
     justify-content: flex-start;
 }
 
-.sidebarMain > .sidebarWrapper  > div {
+.sidebarMain > .sidebarWrapper  > .link {
     margin: var(--spacing-lg) 0px 0px 0px;
+    text-decoration: none;
 
     display: flex;
     flex-direction: column;
@@ -35,7 +36,7 @@
     align-items: center;
 }
 
-.sidebarMain > .sidebarWrapper  > div > span {
+.sidebarMain > .sidebarWrapper  > .link > span {
     font-family: var(--font-Barlow);
     color: var(--text-primary);
     font-size: 10px;

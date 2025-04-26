@@ -1,0 +1,27 @@
+
+.customMain {
+    width: 100%;
+}
+
+.customMain > .customWrapper {
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.customMain > .customWrapper .customSiderBarNav {
+    flex:1;
+    height: 100vh;
+    border-right: 1px solid #E7E7E7;
+
+    background-color: var(--bg-sidebar);
+}
+
+.customMain > .customWrapper .customizationArea {
+    flex: 13;
+    height: 100vh;
+    /* border: 1px solid rgb(95, 43, 190); */
+}
