@@ -1,0 +1,453 @@
+.HomePageMain {
+    width: 100%;
+    /* border: 1px solid red; */
+    background-color: var(--bg-welcome);
+}
+
+.HomePageMain>.HomePageWrapper {
+    width: 100%;
+    /* border: 1px solid black; */
+    overflow: hidden;
+    padding: 0px 0px var(--spacing-lg) 0px;
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+.chatBot {
+    /* border: 1px solid red; */
+
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+}
+
+.chatBot>.chatBotWrapper {
+    position: relative;
+    /* border: 1px solid red; */
+
+    border-radius: 4px;
+}
+
+.chatBot>.chatBotWrapper>.logo {
+    position: absolute;
+
+    top: -24px;
+    left: calc(50% - 24px);
+}
+
+.chatBot>.chatBotWrapper>.crossIcon {
+    position: absolute;
+
+    cursor: pointer;
+
+    top: 8px;
+    right: 8px;
+}
+
+.chatBotWrapper>.welcomeMessage {
+    background-color: #fff;
+    /* border: 1px solid red; */
+    box-shadow: 0px 4px 20px 0px rgba(66, 91, 118, 0.15);
+    padding: calc(var(--spacing-md) + var(--spacing-sm)) var(--spacing-md) var(--spacing-md) var(--spacing-md);
+}
+
+.chatBotWrapper>.welcomeMessage>p {
+    max-width: 208px;
+
+    font-family: var(--font-Poppins);
+    color: var(--text-priceBtn);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0px;
+}
+
+
+.iconMain {
+    width: 100%;
+    /* border: 1px solid red; */
+    margin: var(--spacing-md) 0px 0px 0px;
+
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.chatBot>.chatBotWrapper>.iconMain>.icon {
+    width: 60px;
+    height: 60px;
+    background-color: var(--button-bg-dark-2);
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.charArea {
+    width: 376px;
+    height: 530px;
+    /* border: 1px solid blue; */
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+
+
+
+
+.charArea>.header {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+
+    padding: var(--spacing-sm);
+    background-color: #33475b;
+    /* border: 1px solid red; */
+}
+
+.charArea>.header>span {
+    margin: 0px 0px 0px var(--spacing-sm);
+
+    font-family: var(--font-Poppins);
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 26px;
+    letter-spacing: 0px;
+}
+
+
+.logoDiv {
+    position: relative;
+}
+
+.logoDiv>.active {
+    position: absolute;
+    top: 23px;
+    right: 0px;
+
+    width: 11px;
+    height: 11px;
+    background-color: #00BDA5;
+    border: 1px solid #fff;
+    border-radius: 50%;
+}
+
+
+
+
+
+
+
+
+.charArea>.body {
+    background-color: #EEEEEE;
+    width: 100%;
+    padding: var(--spacing-md) var(--spacing-sm);
+
+    /* border: 1px solid red; */
+
+    flex: 1;
+    overflow: auto;
+}
+
+.body > div {
+    margin: 0px 0px var(--spacing-sm)  0px;
+}
+
+
+.body>.messageDiv {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+
+    /* border: 1px solid blue; */
+
+    width: 100%;
+}
+
+.body>.messageDiv>.message {
+    /* border: 1px solid red; */
+    max-width: 80%;
+    text-align: justify;
+    padding: var(--spacing-md) var(--spacing-sm);
+    border-radius: 9px;
+    background-color: #fff;
+
+    font-family: var(--font-Poppins);
+    color: #000000;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 13px;
+    letter-spacing: 0px;
+}
+
+
+
+
+
+
+
+.body>.formDivMain {
+    width: 100%;
+    /* margin: var(--spacing-lg) 0px 0px 0px; */
+    /* border: 1px solid red; */
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.formDivMain>img {
+    margin: 0px var(--spacing-sm) 0px 0px;
+    width: 32px;
+    height: 32px;
+}
+
+.formDivMain>.form {
+    width: 100%;
+    max-width: 280px;
+    /* border: 1px solid red;  */
+    border-radius: 16.13px;
+    background-color: #fff;
+    border: 1px solid #D1D6DA;
+
+    padding: var(--spacing-md) var(--spacing-md) var(--spacing-lg) var(--spacing-md);
+}
+
+.formDivMain>.form>p {
+    margin: 0px 0px calc(var(--spacing-sm) + 5px) 0px;
+
+    font-family: var(--font-Poppins);
+    color: #000000;
+    font-size: 9.12px;
+    font-weight: 500;
+    line-height: 9.1px;
+    letter-spacing: 0px;
+}
+
+.formDivMain>.form>div {
+    width: 100%;
+}
+
+.formDivMain>.form>div>p {
+    font-family: var(--font-Poppins);
+    color: #505050;
+    font-size: 9.12px;
+    font-weight: 500;
+    line-height: 9.1px;
+    letter-spacing: 0px;
+}
+
+.formDivMain>.form>div>span {
+    font-family: var(--font-Poppins);
+    margin: var(--spacing-sm) 0px 0px 0px;
+
+    width: 100%;
+    border-bottom: 1px solid #C3C3C3;
+    padding: 0px 0px 5px 0px;
+
+    display: block;
+
+    color: #000000;
+    font-size: 11.22px;
+    font-weight: 500;
+    line-height: 9.1px;
+    letter-spacing: 0px;
+}
+
+.formDivMain>.form>div {
+    margin: 0px 0px var(--spacing-sm) 0px;
+}
+
+
+.formDivMain>.form>.btnDiv {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    margin: var(--spacing-md) 0px 0px 0px;
+}
+
+.formDivMain>.form>.btnDiv>button {
+    width: 100%;
+    max-width: 203px;
+    border: none;
+
+    border-radius: 9.12px;
+    background-color: var(--button-bg-dark-2);
+    padding: var(--spacing-sm) 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: var(--font-Inter);
+    color: #fff;
+    font-size: 11.22px;
+    font-weight: 600;
+    line-height: 16.8px;
+    letter-spacing: 0px;
+
+    border: none;
+    /* cursor: pointer; */
+}
+
+.formDivMain .form input {
+    margin: var(--spacing-sm) 0px 0px 0px;
+    width: 100%;
+    border-bottom: 1px solid #C3C3C3;
+    padding: 0px 0px 3px 0px;
+    display: block;
+    font-family: var(--font-Poppins);
+    color: #000000;
+    font-size: 11.22px;
+    font-weight: 500;
+    line-height: 9.1px;
+    letter-spacing: 0px;
+    outline: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+
+
+
+
+
+
+.charArea>.footer {
+    width: 100%;
+    background-color: #fff;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+    border: 1px solid #F2F5F8;
+
+    overflow: hidden;
+
+    /* border: 1px solid rgb(107, 253, 107); */
+
+    position: relative;
+}
+
+.charArea>.footer>.typingArea {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    padding: var(--spacing-md) calc(var(--spacing-lg) + 10px) var(--spacing-md) var(--spacing-sm);
+    border: none;
+    letter-spacing: 0.5px;
+}
+
+.charArea>.footer>.typingArea::placeholder {
+    font-family: var(--font-Poppins);
+    color: #8498B6;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: 0px;
+}
+
+.charArea>.footer>.sendIcon {
+    position: absolute;
+    right: 13px;
+    top: 15px;
+    cursor: pointer;
+
+    transition: 0.2s transform ease-in-out;
+
+}
+
+.charArea>.footer>.sendIcon:active {
+    transform: scale(0.8);
+}
+
+
+
+.messagePrompt {
+    width: 100%;
+    /* border: 1px solid red; */
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+
+.messagePrompt>.promptMain {
+    /* border: 1px solid rgb(88, 77, 77); */
+    width: 100%;
+    max-width: 80%;
+    padding: var(--spacing-md) var(--spacing-sm);
+    border-radius: 9px;
+    font-family: var(--font-Poppins);
+    color: #000000;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 13px;
+    letter-spacing: 0px;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.messagePrompt>.promptMain>img {
+    width: 32px;
+    height: 32px;
+
+    margin: 0px var(--spacing-sm) 0px 0px;
+}
+
+.messagePrompt>.promptMain>.promptDiv {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.messagePrompt>.promptMain>.promptDiv > .prompt {
+    width: 100%;
+    /* max-width: 231px; */
+    border-radius: 9px;
+    background-color: #fff;
+    padding: var(--spacing-sm);
+    font-family: var(--font-Poppins);
+    color: #000000;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 13px;
+    letter-spacing: 0px;
+}
+
+.messagePrompt>.promptMain>.promptDiv>.prompt:last-child {
+    margin: var(--spacing-sm) 0px 0px 0px;
+}

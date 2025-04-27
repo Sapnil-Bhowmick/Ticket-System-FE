@@ -10,6 +10,7 @@ import ContactCenter from "./pages/ContactCenterPage/ContactCenter.jsx"
 import Analytics from "./pages/AnalyticsPage/Analytics.jsx"
 import NotFound from "./pages/NotFound/NotFound.jsx";
 import Welcome from "./pages/WelcomePage/Welcome.jsx"
+import HomePage from "./pages/HomePage/HomePage.jsx";
 
 const AppRouter = createBrowserRouter([
     {
@@ -56,6 +57,11 @@ const AppRouter = createBrowserRouter([
         path: "/Analytics",
         element: <Analytics />
     } , 
+
+    {
+        path: "/User",
+        element: <HomePage />
+    } ,
 
     {
         path: "*",

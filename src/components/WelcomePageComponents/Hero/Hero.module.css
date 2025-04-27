@@ -33,6 +33,7 @@
 
 .HeroMain>.HeroWrapper .left h1 {
     max-width: 666px;
+    padding: calc(var(--spacing-md) + 3px) 0px 0px 0px;
 
     font-family: var(--font-Barlow);
     color: var(--text-primary);
