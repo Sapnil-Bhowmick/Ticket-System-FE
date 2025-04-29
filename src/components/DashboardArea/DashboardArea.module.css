@@ -57,7 +57,7 @@ h1 {
 
     outline: none;
 
-    padding: 0px 0px 0px calc(var(--spacing-lg) + 10px);
+    padding: 0px var(--spacing-sm) 0px calc(var(--spacing-lg) + 10px);
 }
 
 
@@ -160,4 +160,13 @@ h1 {
   ::-webkit-scrollbar-track {
     background:  rgba(192, 190, 190, 0.3); /* Or a soft background */
     /* margin-top: 15px; */
+  }
+
+
+  .notFoundText {
+    font-family: var(--font-Inter);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 14px;
+    letter-spacing: 0px;
   }

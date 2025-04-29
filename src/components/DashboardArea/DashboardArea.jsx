@@ -3,10 +3,19 @@ import styles from "./DashboardArea.module.css"
 import SearchIcon from "../../assets/icons/search.svg"
 import downArrow from "../../assets/icons/down-arrow.svg"
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Ticket from "../Ticket/Ticket";
+import { useDispatch, useSelector } from "react-redux";
+import toast from "react-hot-toast";
+import axios from "axios";
+
+import { add_all_tickets } from "../../Redux/slices/ticketSlice";
+import { api_constants } from "../../utils/api_constants";
+
 
 const DashboardArea = () => {
+
+    const dispatch = useDispatch()
 
     const tabs = [
         { id: 0, label: "All Tickets" },
@@ -14,7 +23,42 @@ const DashboardArea = () => {
         { id: 2, label: "Unresolved" },
     ];
 
-    const [activeTab, setActiveTab] = useState(1)
+    const [activeTab, setActiveTab] = useState(0)
+    const token = useSelector((store) => store.USER.token)
+    const { all_tickets, resolved_tickets, unresolved_tickets } = useSelector((store) => store.TICKET)
+
+    const ticketTypeArr =
+        activeTab === 0 ? all_tickets : activeTab === 1 ? resolved_tickets : activeTab === 2 ? unresolved_tickets : null
+
+    console.log("token", token)
+
+    useEffect(() => {
+        getAllTickets()
+    }, [])
+
+
+    const getAllTickets = async () => {
+        try {
+            const res = await axios.get(
+                api_constants.BASE_URL + api_constants.TICKET_ALL,
+                {
+                    headers: {
+                        "Authorization": `Bearer ${token}`
+                    }
+                }
+            )
+
+            const { data: ticketData } = res.data
+            dispatch(add_all_tickets({
+                data: ticketData
+            }))
+
+            // console.log(res.data)
+        }
+        catch (err) {
+            toast.error("Unable to fetch tickets")
+        }
+    }
 
     return (
         <section className={styles.dashboardAreaMain}>
@@ -46,12 +90,15 @@ const DashboardArea = () => {
 
                 <div className={styles.ticketContainer}>
                     {
-                        new Array(5).fill(0).map((ticket, index) => {
-                            return (
-                                <Ticket key={index} />
-                            )
-                        })
+                        ticketTypeArr && ticketTypeArr.length !== 0 ? (
+                            ticketTypeArr.map((ticket, _) => {
+                                return <Ticket ticketdata={ticket} key={ticket._id} />
+                            })
+
+                        ) :
+                            <p className={styles.notFoundText}>No Tickets Found</p>
                     }
+
                 </div>
             </div>
         </section >

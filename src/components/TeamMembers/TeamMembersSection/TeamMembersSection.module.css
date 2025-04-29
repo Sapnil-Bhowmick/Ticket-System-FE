@@ -145,6 +145,14 @@ td img.avatar {
   text-align: center;
 }
 
+.roleType {
+  text-transform: lowercase;
+}
+
+.roleType::first-letter {
+  text-transform: uppercase;
+}
+
 
 .addMemberBtn {
   display: flex;

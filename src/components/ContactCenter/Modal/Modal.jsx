@@ -10,7 +10,7 @@ const Modal = ({ message, set_member_status, handleConfirm, customStyles }) => {
         >
             <p>{message}</p>
             <div className={styles.btnDiv}>
-                <button className={styles.cancel} onClick={() => set_member_status(false)}>Cancel</button>
+                <button className={styles.cancel} onClick={() => set_member_status()}>Cancel</button>
                 <button className={styles.confirm} onClick={handleConfirm}>Confirm</button>
             </div>
         </div>

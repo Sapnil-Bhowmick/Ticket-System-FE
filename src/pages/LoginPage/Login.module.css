@@ -114,6 +114,7 @@ form .inputFieldDiv label{
 form .inputFieldDiv input{
     display: block;
     margin: 5px 0px 0px 0px;
+    padding: 0px var(--spacing-sm);
 
     width:100%;
     height: 39.47px;
@@ -189,8 +190,7 @@ form > .loginBtn {
     border: none;
     width:100%;
     border-radius: 28.19px;
-    background-color: var(--bg-user-login_login);
-
+    background-color: var(--bg-user-login_register);
     font-family: var(--font-Poppins);
     color: var(--text-btn);
     font-weight: 500;
@@ -263,4 +263,9 @@ form > .loginBtn:active {
 
 .accountText > .signUpLink {
     color: var(--text-priceBtn);
+}
+
+
+.error {
+    color: red;
 }

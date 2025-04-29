@@ -1,41 +1,59 @@
 import styles from "./Ticket.module.css"
 
 import userAvatar from "../../assets/icons/userAvatar.svg"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { formatDate, formatTime, getElapsedTime } from "../../utils/dateTime"
+import { addActiveTicket } from "../../Redux/slices/ticketSlice"
+import { useDispatch } from "react-redux"
 
 
-const Ticket = () => {
+
+const Ticket = ({ticketdata}) => {
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    const handleOpenTicket = () => {
+        dispatch(addActiveTicket({
+            data: ticketdata
+        }))
+
+        navigate("/ContactCenter")
+    }
+
+
+
     return (
         <div className={styles.ticketContainer}>
             <div className={styles.ticketInfo}>
                 <div className={styles.timeDiv}>
                     <div className={styles.ticket}>
                         <span className={styles.active}></span>
-                        <span className={styles.ticketNo}>Ticket# 2023-00123</span>
+                        <span className={styles.ticketNo}>Ticket# {formatDate(ticketdata.createdAt)}</span>
                     </div>
 
                     <div className={styles.postedTime}>
-                        Posted at 12:45 AM
+                        Posted at {formatTime(ticketdata.createdAt)}
                     </div>
                 </div>
 
                 <div className={styles.ticketBody}>
-                    <p className={styles.desc}>I have a doubt regarding todays class ?</p>
-                    <span className={StyleSheet.elapsedTime}>10:00</span>
+                    <p className={styles.desc}>{ticketdata.description}</p>
+                    <span className={StyleSheet.elapsedTime}>{getElapsedTime(ticketdata.createdAt)}</span>
                 </div>
             </div>
 
             <div className={styles.ticketSender}>
                 <div className={styles.user}>
-                    <img src={userAvatar} alt="User Image" />
+                    <img src={ticketdata.creatorID.profilePic} alt="User Image" />
                     <div className={styles.userInfo}>
-                        <span>John Snow</span>
-                        <span>+91-0000000000</span>
-                        <span>example@gmail.com</span>
+                        <span>{ticketdata.creatorID.name}</span>
+                        <span>{ticketdata.creatorID.phone}</span>
+                        <span>{ticketdata.creatorID.emailID}</span>
                     </div>
                 </div>
 
-                <Link className={styles.openTicket}>Open Ticket</Link>
+                <Link className={styles.openTicket} onClick={handleOpenTicket}>Open Ticket</Link>
             </div>
         </div>
     )

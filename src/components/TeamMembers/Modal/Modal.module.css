@@ -98,6 +98,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    cursor: pointer;
+  }
+
+  .add_edit_modalMain > .add_edit_modalWrapper .memberRole:first-child {
+    border-bottom: none;
   }
 
   .downArrow {
@@ -138,4 +144,9 @@
     background-color: var(--button-bg-dark-2);
     color: #FAFBFC;
     margin: 0px 0px 0px var(--spacing-sm);
+  }
+
+  .error {
+    color: red;
+    margin: 0px 0px 0px 5px;
   }

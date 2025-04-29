@@ -114,6 +114,9 @@
 
 .teamMembers .admin .avatar {
     margin: 0px var(--spacing-md) 0px var(--spacing-sm);
+    
+    width: 30px;
+    height: 30px;
 }
 
 .teamMembers .admin .downArrow {
@@ -128,6 +131,8 @@
 .myTeamMembers {
     border-radius: var(--border-radius-contactCenter-pills);
     border: 1px solid #D1D6DA;
+
+    overflow: hidden;
 }
 
 .myTeamMembers > .member {
@@ -135,7 +140,7 @@
     align-items: center;
     justify-content: flex-start;
 
-    padding: 3px 0px;
+    padding: 3px 8px;
     border-bottom: 1px solid #D1D6DA;
 
     font-family: var(--font-Inter);
@@ -158,8 +163,8 @@
     margin: 0px var(--spacing-md) 0px calc(var(--spacing-sm) + 5px);
 }
 
-.status {
+/* .status {
     margin: 0px 0px 0px var(--spacing-sm);
-}
+} */
 
 /* .teamMembers > .admin */

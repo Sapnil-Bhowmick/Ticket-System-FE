@@ -4,11 +4,17 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const PieChart = () => {
+const PieChart = ({totalTickets , totalResolvedTickets}) => {
+
+  console.log(totalTickets , totalResolvedTickets)
+  const totalunResolvedTickets = totalTickets - totalResolvedTickets
+
+  const percentage_resolved = Math.round((totalResolvedTickets / totalTickets) * 100);
+
   const data = {
     datasets: [
       {
-        data: [60, 40], // 80% filled, 20% empty
+        data: [totalResolvedTickets , totalunResolvedTickets], // 80% filled, 20% empty
         backgroundColor: ['#00D907', '#E0E0E0'], // Green and light gray
         borderWidth: 0,
         borderRadius: 5
@@ -37,7 +43,7 @@ const PieChart = () => {
         fontWeight: '600',
         color: "#030229"
       }}>
-        80%   
+        {percentage_resolved}
       </div>
     </div>
   );

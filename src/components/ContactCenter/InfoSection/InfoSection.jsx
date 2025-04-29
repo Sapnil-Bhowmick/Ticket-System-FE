@@ -9,27 +9,153 @@ import downArrow from "../../../assets/icons/downArrow.svg"
 import ticketIcon from "../../../assets/icons/Ticket.svg"
 
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Modal from "../Modal/Modal"
+import { useDispatch, useSelector } from "react-redux"
+import axios from "axios"
+import { api_constants } from "../../../utils/api_constants"
+import toast from "react-hot-toast"
+import { removeTicket, updateActiveTicketStatus } from "../../../Redux/slices/ticketSlice"
+// import { clearActiveTicketMessages } from "../../../Redux/slices/messageSlice"
+
 
 const InfoSection = () => {
+
+
+    const dispatch = useDispatch()
+    const activeChat = useSelector((store) => store.TICKET.activeTicket)
+    const { token, userInfo } = useSelector((store) => store.USER)
 
     const [showTeamMembers, setShowTeamMembers] = useState(false)
     const [showTicketStatus, setShowTicketStatus] = useState(false)
     const [isAssignToMember, setIsAssignToMember] = useState(false)
     const [isStatusSet, setIsStatusSet] = useState(false)
 
-    const handleAssignToTeamMember = () => {
+    const [selectedMemberID, setSelectedMemberID] = useState("")
+    const [selectStatus, setSelectStatus] = useState(null)
+
+    const [teamMembers, setTeamMembers] = useState([])
+
+
+    useEffect(() => {
+        getTeamMembers()
+    }, [])
+
+
+
+    const getTeamMembers = async () => {
+
+        try {
+            const res = await axios.get(
+                api_constants.BASE_URL + api_constants.TEAM_MEMBERS_ALL,
+                {
+                    headers: {
+                        "Authorization": `Bearer ${token}`
+                    }
+                }
+            )
+
+            //   console.log("RESPONSE", res)
+
+            const { data: ticketData } = res.data
+            setTeamMembers(ticketData)
+
+            //   console.log("ticketData" , ticketData)
+        }
+        catch (err) {
+            toast.error("Unable to fetch Admin Team Members")
+        }
+    }
+
+
+    const assignTicket_toMember = async (memberID) => {
+
+        try {
+            const res = await axios.post(
+                api_constants.BASE_URL + api_constants.ASSIGN_TICKET + `/${memberID}`,
+                { "ticketID": activeChat._id },
+
+                {
+                    headers: {
+                        "Authorization": `Bearer ${token}`
+                    }
+                }
+            )
+
+            // console.log("RESPONSE" , res.data)
+
+            dispatch(removeTicket({
+                ticketID: activeChat._id
+            }))
+
+            toast.success(res.data.message)
+
+        }
+        catch (err) {
+            const errMessage = err?.response?.data?.error?.message
+            if (errMessage) {
+                toast.error(errMessage)
+            }
+        }
+    }
+
+    const updateTicketStatus = async (status) => {
+
+        try {
+            const res = await axios.post(
+                api_constants.BASE_URL + api_constants.SET_TICKET_STATUS + `/${status}`,
+                { "ticketID": activeChat._id },
+
+                {
+                    headers: {
+                        "Authorization": `Bearer ${token}`
+                    }
+                }
+            )
+
+            dispatch(updateActiveTicketStatus({
+                ticketStatus: status
+            }))
+
+            toast.success(res.data.message)
+
+        }
+        catch (err) {
+            const errMessage = err?.response?.data?.error?.message
+            if (errMessage) {
+                toast.error(errMessage)
+            }
+        }
+    }
+
+    const handleAssignToTeamMember = (memberID) => {
         setShowTeamMembers(false)
         setIsAssignToMember(true)
+        setSelectedMemberID(memberID)
     }
 
-    const handleAssignConfirm = () => {
+    const handleAssignConfirm = async () => {
         console.log("Assigned")
+        if (selectedMemberID) {
+            console.log("INSIDE")
+            await assignTicket_toMember(selectedMemberID)
+            setSelectedMemberID("")
+            setShowTeamMembers(false)
+            setIsAssignToMember(false)
+        }
+
     }
 
-    const handleStatusConfirm = () => {
-        console.log("Resolved")
+    const handleMemberStatus = () => {
+        setIsStatusSet(false)
+        setSelectStatus(null)
+    }
+
+    const handleStatusConfirm = (status) => {
+        if (selectStatus) {
+            console.log("Resolved")
+            updateTicketStatus(selectStatus)
+        }
     }
 
     return (
@@ -37,7 +163,7 @@ const InfoSection = () => {
             <div className={styles.infoWrapper}>
 
                 <div className={styles.userAvatar}>
-                    <img src={userAvatar} alt="" />
+                    <img src={activeChat.creatorID.profilePic} alt="" />
                     <span>Chat</span>
                 </div>
 
@@ -45,22 +171,22 @@ const InfoSection = () => {
                     <p>Details</p>
                     <div className={styles.userAvatarPill}>
                         <img src={nameIcon} alt="" />
-                        John Doe
+                        {activeChat.creatorID.name}
                     </div>
                     <div className={styles.userAvatarPill}>
                         <img src={callIcon} alt="" />
-                        +1 (000) 000-0000
+                        {activeChat.creatorID.phone}
                     </div>
                     <div className={styles.userAvatarPill}>
                         <img src={emailIcon} alt="" />
-                        example@gmail.com
+                        {activeChat.creatorID.emailID}
                     </div>
                 </div>
 
                 <div className={styles.teamMembers}>
                     <p>Teammates</p>
                     <div className={styles.admin}>
-                        <img src={userAvatar} alt="" className={styles.avatar} />
+                        <img src={userInfo.profilePic} alt="" className={styles.avatar} />
                         Joe Doe
                         <img
                             src={downArrow}
@@ -72,7 +198,7 @@ const InfoSection = () => {
                         {
                             isAssignToMember &&
                             <Modal
-                                message="Chat would be assigned to Different team membe"
+                                message="Chat would be assigned to Different team member"
                                 set_member_status={setIsAssignToMember}
                                 handleConfirm={handleAssignConfirm}
                             />
@@ -83,11 +209,11 @@ const InfoSection = () => {
                         showTeamMembers &&
                         <div className={styles.myTeamMembers}>
                             {
-                                new Array(3).fill(0).map((member, index) => {
+                                teamMembers.map((member, index) => {
                                     return (
-                                        <div className={styles.member} key={index} onClick={handleAssignToTeamMember}>
-                                            <img src={userAvatar} alt="" />
-                                            Joe Doe
+                                        <div className={styles.member} key={member._id} onClick={() => handleAssignToTeamMember(member._id)}>
+                                            <img src={member.profilePic} alt="" />
+                                            {member.userName}
                                         </div>
                                     )
                                 })
@@ -112,10 +238,24 @@ const InfoSection = () => {
                     {
                         showTicketStatus &&
                         <div className={styles.myTeamMembers}>
-                            <div className={`${styles.member} ${styles.status}`} onClick={() => setIsStatusSet(true)}>
+                            <div
+                                className={`${styles.member} ${styles.status}`}
+                                onClick={() => {
+                                    setIsStatusSet(true)
+                                    setSelectStatus("Resolved")
+                                }}
+                                style={{ backgroundColor: activeChat.status === "Resolved" && "#EFEFEF" }}
+                            >
                                 Resolved
                             </div>
-                            <div className={`${styles.member} ${styles.status}`}>
+                            <div
+                                className={`${styles.member} ${styles.status}`}
+                                onClick={() => {
+                                    setIsStatusSet(true)
+                                    setSelectStatus("UnResolved")
+                                }}
+                                style={{ backgroundColor: activeChat.status === "UnResolved" && "#EFEFEF" }}
+                            >
                                 Unresolved
                             </div>
                         </div>
@@ -126,7 +266,7 @@ const InfoSection = () => {
                         isStatusSet &&
                         <Modal
                             message="Chat will be closed"
-                            set_member_status={setIsStatusSet}
+                            set_member_status={handleMemberStatus}
                             handleConfirm={handleStatusConfirm}
                             customStyles={{
                                 top: "150px"
