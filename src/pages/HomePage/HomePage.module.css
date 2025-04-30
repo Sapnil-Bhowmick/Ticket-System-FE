@@ -176,8 +176,8 @@
     overflow: auto;
 }
 
-.body > div {
-    margin: 0px 0px var(--spacing-sm)  0px;
+.body>div {
+    margin: 0px 0px var(--spacing-sm) 0px;
 }
 
 
@@ -336,7 +336,14 @@
 }
 
 
-
+.formDivMain .form input::placeholder {
+    font-family: var(--font-Poppins);
+    color: #000;
+    font-size: 11.22px;
+    font-weight: 500;
+    line-height: 9.1px;
+    letter-spacing: 0px;
+}
 
 
 
@@ -434,7 +441,7 @@
     align-items: flex-start;
 }
 
-.messagePrompt>.promptMain>.promptDiv > .prompt {
+.messagePrompt>.promptMain>.promptDiv>.prompt {
     width: 100%;
     /* max-width: 231px; */
     border-radius: 9px;
@@ -455,7 +462,84 @@
 
 
 
-.formDivMain > .form > div > .error {
+.formDivMain>.form>div>.error {
     color: red;
     margin: 3px 0px 0px 0px;
+}
+
+
+
+
+@media only screen and (max-width: 576px) {
+    .HomePageMain {
+        background-color: #fff;
+    }
+
+    .HomePageMain>.HomePageWrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .charArea {
+        width: 100%;
+    }
+
+    .chatBot {
+        width: 100%;
+
+        padding: 0px 15px;
+        right: 0px;
+        bottom: 0px;
+        /* top: 60px; */
+    }
+
+    .chatBot .chatBotWrapper .iconMain {
+        bottom: 22px;
+        left: -12px;
+        position: fixed;
+    }
+
+    .chatBot .chatBotWrapper .iconMain .icon {
+        /* position: fixed; */
+        bottom: 20px;
+        right: 15px;
+    }
+
+    .chatBotWrapper {
+        position: fixed;
+        bottom: 250px;
+        right: 0px;
+    }
+
+    .chatBotWrapper .welcomeMessage {
+        position: fixed;
+        bottom: 121px;
+        right: 24px;
+    }
+
+    .chatBot .chatBotWrapper .crossIcon {
+        top: 51px;
+        right: 19px;
+        z-index: 1;
+    }
+
+    .chatBot .chatBotWrapper .logo {
+        left: -150px;
+        top: 10px;
+        z-index: 1;
+    }
+
+}
+
+
+@media only screen and (max-width: 375px) {
+    .chatBotWrapper {
+        bottom: 100px;
+    }
+
+    .chatBot .chatBotWrapper .logo {
+        top: -138px;
+    }
 }

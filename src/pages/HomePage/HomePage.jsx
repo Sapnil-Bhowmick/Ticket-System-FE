@@ -29,9 +29,9 @@ const HomePage = () => {
     const [isMessageBoxOpen, setIsMessageBoxOpen] = useState(true)
     // const [isChatStarted, setIsChatStarted] = useState(false)
     const [introForm, setIntroForm] = useState({
-        name: "Your name",
-        email: "example@gmail.com",
-        phone: "+1 (000) 000-0000"
+        name: "",
+        email: "",
+        phone: ""
     })
 
     const [introError, setIntroError] = useState({
@@ -340,6 +340,7 @@ const HomePage = () => {
                                                             <input
                                                                 type="text"
                                                                 name="name"
+                                                                placeholder="Your name"
                                                                 value={introForm.name}
                                                                 onChange={(e) => handleInputChange(e)}
                                                             />
@@ -351,6 +352,7 @@ const HomePage = () => {
                                                             <input
                                                                 type="text"
                                                                 name="phone"
+                                                                placeholder="+1 (000) 000-0000"
                                                                 value={introForm.phone}
                                                                 onChange={(e) => handleInputChange(e)}
                                                             />
@@ -362,6 +364,7 @@ const HomePage = () => {
                                                             <input
                                                                 type="text"
                                                                 name="email"
+                                                                placeholder="example@gmail.com"
                                                                 value={introForm.email}
                                                                 onChange={(e) => handleInputChange(e)}
                                                             />

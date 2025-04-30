@@ -24,6 +24,7 @@ const DashboardArea = () => {
     ];
 
     const [activeTab, setActiveTab] = useState(0)
+    const [search, setSearch] = useState("")
     const token = useSelector((store) => store.USER.token)
     const { all_tickets, resolved_tickets, unresolved_tickets } = useSelector((store) => store.TICKET)
 
@@ -35,6 +36,15 @@ const DashboardArea = () => {
     useEffect(() => {
         getAllTickets()
     }, [])
+
+
+    const handleSearchTicket = () => {
+        if(all_tickets && all_tickets.length !== 0){
+            if(search.trim().length > 0){
+                const filteredTickets = all_tickets.filter((ticket))
+            }
+        }
+    }
 
 
     const getAllTickets = async () => {
@@ -66,8 +76,13 @@ const DashboardArea = () => {
                 <h1>Dashboard</h1>
 
                 <div className={styles.searchDiv}>
-                    <input className={styles.searchTicketInput} placeholder="Search for ticket" />
-                    <img src={SearchIcon} alt="" className={styles.search} />
+                    <input
+                        className={styles.searchTicketInput}
+                        placeholder="Search for ticket"
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                    />
+                    <img src={SearchIcon} alt="" className={styles.search} onClick={handleSearchTicket} />
                 </div>
 
                 <div className={styles.tabContainer}>

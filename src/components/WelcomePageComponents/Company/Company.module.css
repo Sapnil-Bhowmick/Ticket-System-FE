@@ -19,3 +19,11 @@
     align-items: flex-start;
     justify-content: space-between;
 }
+
+
+
+@media only screen and (max-width: 576px) {
+    .companyMain {
+        display: none;
+    } 
+}
