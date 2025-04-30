@@ -30,7 +30,7 @@ const DashboardArea = () => {
     const ticketTypeArr =
         activeTab === 0 ? all_tickets : activeTab === 1 ? resolved_tickets : activeTab === 2 ? unresolved_tickets : null
 
-    console.log("token", token)
+    // console.log("token", token)
 
     useEffect(() => {
         getAllTickets()

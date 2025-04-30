@@ -3,10 +3,11 @@ import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import createFilter from "redux-persist-transform-filter";
 
-import adminReducer from "./slices/adminSlice.js";
+import userReducer from "./slices/userSlice.js";
 import ticketReducer from "./slices/ticketSlice.js";
 import messageReducer from "./slices/messageSlice.js"
 import memberReducer from "./slices/memberSlice.js"
+import queryReducer from "./slices/querySlice.js"
  
 // Apply filtering to persist only `userInfo` and `token` from the `USER` slice
 const userFilter = createFilter("USER", ["userInfo", "token"]);
@@ -14,20 +15,23 @@ const userFilter = createFilter("USER", ["userInfo", "token"]);
 // Apply filtering to persist only the `activeTicket` from the `TICKET` slice
 const ticketFilter = createFilter("TICKET", ["activeTicket" , "activeChatNo"]);
 
+const queryFilter = createFilter("QUERY" , ["queryUserInfo"])
+
 // Persist Config
 const persistConfig = {
   key: "root", // Use 'root' to persist all reducers
   storage,
-  whitelist: ["USER", "TICKET"], // Persist both `USER` and `TICKET`
-  transforms: [userFilter, ticketFilter], // Apply filters for both `USER` and `TICKET`
+  whitelist: ["USER", "TICKET" , "QUERY"], // Persist both `USER` and `TICKET`
+  transforms: [userFilter, ticketFilter, queryFilter], // Apply filters for `USER` and `TICKET` and "QUERY"
 };
 
 // Combine reducers
 const rootReducer = combineReducers({
-  USER: adminReducer,
+  USER: userReducer,
   TICKET: ticketReducer,
   MESSAGE: messageReducer,
-  MEMBER: memberReducer
+  MEMBER: memberReducer,
+  QUERY: queryReducer
 });
 
 // Create persisted reducer

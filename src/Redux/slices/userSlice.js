@@ -5,7 +5,7 @@ const initialState = {
     token: null
 }
 
-const adminSlice = createSlice({
+const userSlice = createSlice({
     name: "User",
     initialState,
 
@@ -26,6 +26,6 @@ const adminSlice = createSlice({
 
 
 
-export const {saveLoggedInUserDetails , logoutUser} = adminSlice.actions
-export default adminSlice.reducer
+export const {saveLoggedInUserDetails , logoutUser} = userSlice.actions
+export default userSlice.reducer
 

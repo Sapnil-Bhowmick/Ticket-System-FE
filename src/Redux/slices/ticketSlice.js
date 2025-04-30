@@ -13,17 +13,17 @@ const initialState = {
 
 const ticketSlice = createSlice({
     name: "Ticket",
-    initialState ,
+    initialState,
 
     reducers: {
-        add_all_tickets: (state,action) => {
+        add_all_tickets: (state, action) => {
             state.all_tickets = action.payload.data
 
-            let resolvedTickets = [] , unresolvedTickets = []
+            let resolvedTickets = [], unresolvedTickets = []
             action.payload.data.forEach((ticket) => {
-                if((ticket.status === "UnResolved")){
+                if ((ticket.status === "UnResolved")) {
                     unresolvedTickets.push(ticket)
-                } 
+                }
                 else {
                     resolvedTickets.push(ticket)
                 }
@@ -31,35 +31,46 @@ const ticketSlice = createSlice({
 
             state.resolved_tickets = resolvedTickets
             state.unresolved_tickets = unresolvedTickets
-        } , 
+        },
 
-        addActiveTicket: (state , action) => {
+        addActiveTicket: (state, action) => {
             state.activeTicket = action.payload.data
             state.activeChatNo = action.payload.chatNo
-        } ,
+        },
 
-        removeTicket: (state , action) => {
+        removeTicket: (state, action) => {
 
             let updatedActiveTicket
             const index = state.all_tickets.findIndex((ticket) => ticket._id === action.payload.ticketID)
-            if(index === 0){
+            if (index === 0) {
                 updatedActiveTicket = state.all_tickets[index + 1]
-            } 
-            else if(index === state.all_tickets.length - 1){
+            }
+            else if (index === state.all_tickets.length - 1) {
                 updatedActiveTicket = state.all_tickets[index - 1]
             }
 
             const filteredTickets = state.all_tickets.filter((ticket) => ticket._id !== action.payload.ticketID)
             state.all_tickets = filteredTickets
             state.activeTicket = updatedActiveTicket
-        } , 
+        },
 
-        updateActiveTicketStatus: (state , action) => {
+        updateActiveTicketStatus: (state, action) => {
             state.activeTicket.status = action.payload.ticketStatus
+        },
+
+        clearTicketData: (state, action) => {
+            return {
+                all_tickets: null,
+                resolved_tickets: null,
+                unresolved_tickets: null,
+
+                activeTicket: null,
+                activeChatNo: null
+            }
         }
     }
 })
 
 
-export const {add_all_tickets , addActiveTicket , removeTicket , updateActiveTicketStatus} = ticketSlice.actions
+export const { add_all_tickets, addActiveTicket, removeTicket, updateActiveTicketStatus, clearTicketData } = ticketSlice.actions
 export default ticketSlice.reducer

@@ -9,12 +9,23 @@ import settingsIcon from "../../assets/icons/settings-icon.svg"
 import teamIcon from "../../assets/icons/team-icon.svg"
 
 import profileIcon from "../../assets/icons/profileIcon.svg"
-import { Link } from "react-router-dom"
+import { Link , useNavigate } from "react-router-dom"
+import { logoutUser } from "../../Redux/slices/userSlice"
+import { useDispatch } from "react-redux"
+import { clearTicketData } from "../../Redux/slices/ticketSlice"
 
 
 const SidebarNav = ({activePage}) => {
 
     // console.log("activePage" , activePage)
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    const handleLogout = () => {
+        dispatch(logoutUser())
+        // dispatch(clearTicketData())
+        navigate("/")
+    }
 
     return (
         <nav className={styles.sidebarMain}>
@@ -46,7 +57,7 @@ const SidebarNav = ({activePage}) => {
                     {activePage === "Settings" && <span>Seting</span>}
                 </Link>
 
-                <Link className={styles.settings}>
+                <Link className={styles.settings} onClick={handleLogout}>
                     <img src={profileIcon} alt="Go To Setttings" />
                 </Link>
             </div>

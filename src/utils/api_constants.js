@@ -16,5 +16,12 @@ export const api_constants = {
     "GET_ALL_MESSAGES": "/message/all",
     "ADMIN_SEND_MESSAGE": "/message/send",
 
-    "GET_ALL_ANALYTICS": "/analytics/all"
+    "GET_ALL_ANALYTICS": "/analytics/all",
+
+    "GET_CUSTOMIZATION": "/chatbot/customizations",
+    "EDIT_CUSTOMIZATION": "/chatbot/customizations",
+
+    "ADD_USER": "/user/add",
+    "USER_SEND_QUERY": "/message/user/send",
+    "GET_USER_MESSAGES": "/message/user/all",
 }

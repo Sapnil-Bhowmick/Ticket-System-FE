@@ -99,7 +99,7 @@ const Register = () => {
           value: field === "password" ? `${field} must have atleast 1 upperCase, 1 lowerCase, 1 digit, 1 special character` : `Invalid ${field}`
         }
       })
-      console.log("Regex did bot match")
+      console.log("Regex did not match")
       isValid = false
     }
 

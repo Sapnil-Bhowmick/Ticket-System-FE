@@ -8,7 +8,7 @@ import { useReducer } from "react"
 import axios from "axios"
 
 import { useDispatch, useSelector } from "react-redux"
-import { saveLoggedInUserDetails } from "../../Redux/slices/adminSlice"
+import { saveLoggedInUserDetails } from "../../Redux/slices/userSlice"
 import toast from "react-hot-toast"
 import { api_constants } from "../../utils/api_constants"
 
@@ -114,7 +114,7 @@ const Login = () => {
           userInfo: user
         }))
 
-        navigate("/dashboard")
+        navigate("/Dashboard")
 
         dispatch({
           type: "RESET_FORM"

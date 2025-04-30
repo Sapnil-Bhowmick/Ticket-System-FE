@@ -451,3 +451,11 @@
 .messagePrompt>.promptMain>.promptDiv>.prompt:last-child {
     margin: var(--spacing-sm) 0px 0px 0px;
 }
+
+
+
+
+.formDivMain > .form > div > .error {
+    color: red;
+    margin: 3px 0px 0px 0px;
+}

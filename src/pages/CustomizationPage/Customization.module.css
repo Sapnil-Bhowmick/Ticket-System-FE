@@ -383,6 +383,9 @@
 }
 
 .cutomizationContainer > .message > .messageDiv > div {
+    display: flex;
+    align-items: flex-start;
+
     margin: 0px 0px 0px var(--spacing-sm);
     background-color: #F6F7F5;
     border-radius: 9px;
@@ -407,6 +410,7 @@
 .cutomizationContainer > .message > .messageDiv > div > img {
     position: absolute;
     right: 10px;
+    top: 19px;
 }
 
 .cutomizationContainer > .message > .messageDiv > input {
@@ -537,7 +541,7 @@
 .welcomeMessageDiv > div {
     border-radius: 9px;
     background-color: #F6F7F5;
-    margin: var(--spacing-lg) 0px 0px 0px;
+    margin: var(--spacing-lg) 0px var(--spacing-sm) 0px;
     padding: var(--spacing-lg) var(--spacing-md) var(--spacing-md) var(--spacing-sm);
 
     position: relative;

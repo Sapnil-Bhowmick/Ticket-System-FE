@@ -5,6 +5,9 @@ import styles from './Dashboard.module.css'
 
 
 const Dashboard = () => {
+
+  console.log("In Dashboard")
+
   return (
     <div className={styles.dashboardMain}>
         <div className={styles.dashboardWrapper}>

@@ -9,10 +9,19 @@ import messageSendIcon from "../../assets/icons/Message-Send-Icon.svg"
 import pencilIcon from "../../assets/icons/pencil.svg"
 
 import { headerColors, bgColors } from "../../utils/constants.js"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { useSelector } from "react-redux"
+import axios from "axios"
+import { api_constants } from "../../utils/api_constants.js"
+import toast from "react-hot-toast"
+import MissedTimer from "../../components/MissedTimer/MissedTimer.jsx"
 
 
 const Customization = () => {
+
+  const token = useSelector((store) => store.USER.token)
+
+  const [customizationID, setCustomizationID] = useState(null)
 
   const [headerColor, setHeaderColor] = useState("#33475B")
   const [bgColor, setBgColor] = useState("##EEEEEE")
@@ -34,9 +43,22 @@ const Customization = () => {
     message: "👋 Want to chat about Hubly? I'm an chatbot here to help you find your way."
   })
 
-  const submitPlaceholderData = () => {
-    console.log(introForm)
-  }
+  const [selectedTime, setSelectedTime] = useState({
+    hours: null,
+    minutes: null,
+    seconds: null
+  })
+
+
+  useEffect(() => {
+    getCustomizations()
+  }, [])
+
+
+
+  // const submitPlaceholderData = () => {
+  //   console.log(introForm)
+  // }
 
 
   const handleInputChange = (e) => {
@@ -48,7 +70,7 @@ const Customization = () => {
     })
   }
 
-  const handleCustomMsg = (e, key) => {
+  const handleCustomMsg = async (e, key) => {
     console.log(e.target.value, key)
     if (e.key === 'Enter') {
       setCustomMessage((prev) => {
@@ -58,6 +80,23 @@ const Customization = () => {
           [key]: !customMessage[key]
         }
       })
+
+      let data
+      if (key === "customMsg_1_bool") {
+        data = {
+          welcomeMessage: {
+            prompt_message_1: e.target.value
+          }
+        }
+      } else {
+        data = {
+          welcomeMessage: {
+            prompt_message_2: e.target.value
+          }
+        }
+      }
+
+      await editCustomization(data)
     }
 
   }
@@ -80,17 +119,211 @@ const Customization = () => {
     })
   }
 
-  const handleWelcomeMsgKeyDown = (e) => {
+  const handleWelcomeMsgKeyDown = async (e) => {
     console.log(e.target.value)
-    if (e.key === 'Enter'){
+    if (e.key === 'Enter') {
       setWelcomeMessage((prev) => {
         return {
-          message: e.target.value , 
+          message: e.target.value,
           isEdit: false
         }
       })
+
+      const data = {
+        welcomeMessage: {
+          welcome_message: e.target.value
+        }
+      }
+
+      await editCustomization(data)
     }
   }
+
+
+
+  // ! ----------------------------- API ---------------------------------------
+
+  const getCustomizations = async () => {
+    // console.log("inside get customizations api")
+    try {
+      const res = await axios.get(api_constants.BASE_URL + api_constants.GET_CUSTOMIZATION)
+
+      const { data: customizationData } = res.data
+      // dispatch(deleteMember({
+      //   index: memberID
+      // }))
+
+      console.log("customizationData", customizationData)
+
+      // * Set Values Fetched from DB
+      setCustomizationID(customizationData._id)
+      setHeaderColor(customizationData.color.header)
+      setBgColor(customizationData.color.background)
+      setCustomMessage((prev) => {
+        return {
+          ...prev,
+          customMsg_1_msg: customizationData.welcomeMessage.prompt_message_1,
+          customMsg_2_msg: customizationData.welcomeMessage.prompt_message_2
+        }
+
+      })
+
+      setIntroForm((prev) => {
+        return {
+          ...prev,
+          name: customizationData.formPlaceholders.name,
+          email: customizationData.formPlaceholders.email,
+          phone: customizationData.formPlaceholders.phone
+        }
+      })
+
+      setWelcomeMessage((prev) => {
+        return {
+          ...prev,
+          message: customizationData.welcomeMessage.welcome_message
+
+
+        }
+      })
+
+      setSelectedTime((prev) => {
+        return {
+          ...prev,
+          hours: customizationData.missedChatDuration.hours,
+          minutes: customizationData.missedChatDuration.minutes,
+          seconds: customizationData.missedChatDuration.seconds
+        }
+      })
+
+      toast.success(res.data.message)
+
+    }
+    catch (err) {
+      const errMessage = err?.response?.data?.error?.message
+      if (errMessage) {
+        toast.error(errMessage)
+      }
+    }
+  }
+
+
+
+  const editCustomization = async (data) => {
+    console.log("inside edit customizations api")
+    try {
+      const res = await axios.patch(
+        api_constants.BASE_URL + api_constants.EDIT_CUSTOMIZATION + `/${customizationID}`,
+        data,
+        {
+          headers: {
+            "Authorization": `Bearer ${token}`
+          }
+        }
+      )
+
+      const { data: customizationData } = res.data
+      // dispatch(deleteMember({
+      //   index: memberID
+      // }))
+
+      console.log("customizationData", customizationData)
+
+      // * Set Values Fetched from DB
+      // setCustomizationID(customizationData._id)
+      // setHeaderColor(customizationData.color.header)
+      // setBgColor(customizationData.color.background)
+      // setCustomMessage((prev) => {
+      //    return {
+      //     ...prev ,
+      //     customMsg_1_msg: customizationData.welcomeMessage.prompt_message_1,
+      //     customMsg_2_msg: customizationData.welcomeMessage.prompt_message_2
+      //    }
+
+      // })
+
+      // setIntroForm((prev) => {
+      //   return {
+      //     ...prev , 
+      //     name: customizationData.formPlaceholders.name,
+      //     email: customizationData.formPlaceholders.email,
+      //     phone: customizationData.formPlaceholders.phone
+      //   }
+      // })
+
+      // setWelcomeMessage((prev) => {
+      //   return {
+      //     ...prev , 
+      //     message: customizationData.welcomeMessage.welcome_message
+
+
+      //   }
+      // })
+
+      toast.success(res.data.message)
+
+    }
+    catch (err) {
+      const errMessage = err?.response?.data?.error?.message
+      if (errMessage) {
+        toast.error(errMessage)
+      }
+    }
+  }
+
+
+
+  const handleHeaderColor = async (selectedColor) => {
+    setHeaderColor(selectedColor)
+
+    const data = {
+      color: {
+        header: selectedColor
+      }
+    }
+
+    await editCustomization(data)
+  }
+
+  const handleBgColor = async (selectedColor) => {
+    setBgColor(selectedColor)
+
+    const data = {
+      color: {
+        background: selectedColor
+      }
+    }
+
+    await editCustomization(data)
+  }
+
+
+  const handlePlaceholderData = async () => {
+    const data = {
+      formPlaceholders: {
+        ...introForm
+      }
+    }
+
+    console.log(data)
+
+    await editCustomization(data)
+  }
+
+
+  const handleTimeDuration = async (hours, minutes, seconds) => {
+    // console.log(`${hours}:${minutes}:${seconds}`)
+
+    const data = {
+      missedChatDuration: {
+        hours,
+        minutes,
+        seconds
+      }
+    }
+
+    await editCustomization(data)
+  }
+
 
   return (
     <div className={styles.customMain}>
@@ -105,20 +338,26 @@ const Customization = () => {
 
           <div className={styles.custom_1}>
             <div className={styles.preview}>
-              <div className={styles.chatbotHeader}>
+              <div
+                className={styles.chatbotHeader}
+                style={{ backgroundColor: headerColor }}
+              >
                 <div className={styles.imgDiv}>
                   <img src={HublyLogo} alt="" className={styles.HublyLogo_Header} />
                   <span className={styles.active}></span>
                 </div>
                 <span>Hubly</span>
               </div>
-              <div className={styles.chatbotBody}>
+              <div
+                className={styles.chatbotBody}
+                style={{ backgroundColor: bgColor }}
+              >
 
                 <div className={styles.messageDiv}>
                   <img src={HublyLogo_noborder} alt="" />
                   <div className={styles.message}>
-                    <span>How can i help you?</span>
-                    <span>Ask me anything!</span>
+                    <span>{customMessage.customMsg_1_msg}</span>
+                    <span>{customMessage.customMsg_2_msg}</span>
                   </div>
                 </div>
 
@@ -128,17 +367,17 @@ const Customization = () => {
 
                     <div>
                       <p>Your name</p>
-                      <span>Your name</span>
+                      <span>{introForm.name}</span>
                     </div>
 
                     <div>
                       <p>Your Phone</p>
-                      <span>+1(000) 000-0000</span>
+                      <span>{introForm.phone}</span>
                     </div>
 
                     <div>
                       <p>Your Email</p>
-                      <span>example@gmail.com</span>
+                      <span>{introForm.email}</span>
                     </div>
 
                     <div className={styles.btnDiv}>
@@ -167,7 +406,7 @@ const Customization = () => {
                         <span
                           key={item.id}
                           style={{ backgroundColor: `${item.color}` }}
-                          onClick={() => setHeaderColor(item.color)}
+                          onClick={() => handleHeaderColor(item.color)}
                         ></span>
                       )
                     })
@@ -188,7 +427,7 @@ const Customization = () => {
                         <span
                           key={item.id}
                           style={{ backgroundColor: `${item.color}` }}
-                          onClick={() => setBgColor(item.color)}
+                          onClick={() => handleBgColor(item.color)}
                         ></span>
                       )
                     })
@@ -214,7 +453,7 @@ const Customization = () => {
                       />
                     ) : (
                       <div>
-                        {customMessage.customMsg_1_msg}
+                        {customMessage.customMsg_1_msg.length > 25 ? customMessage.customMsg_1_msg.substring(0, 25) + "..." : customMessage.customMsg_1_msg}
                         <img src={pencilIcon} alt="" onClick={() => setCustomMessage((prev) => {
                           return {
                             ...prev,
@@ -236,7 +475,7 @@ const Customization = () => {
                       />
                     ) : (
                       <div>
-                        {customMessage.customMsg_2_msg}
+                        {customMessage.customMsg_2_msg.length > 25 ? customMessage.customMsg_2_msg.substring(0, 25) + "..." : customMessage.customMsg_2_msg}
                         <img src={pencilIcon} alt="" onClick={() => setCustomMessage((prev) => {
                           return {
                             ...prev,
@@ -256,7 +495,7 @@ const Customization = () => {
           <div className={styles.custom_2}>
 
             <div className={styles.welcomeMessagePreview}>
-              <p>👋 Want to chat about Hubly? I'm an chatbot here to help you find your way.</p>
+              <p>{welcomeMessage.message}</p>
               <img src={HublyLogo_noborder} alt="" />
             </div>
 
@@ -297,7 +536,7 @@ const Customization = () => {
                   </div>
 
                   <div className={styles.btnDiv}>
-                    <button onClick={submitPlaceholderData}>
+                    <button onClick={handlePlaceholderData}>
                       Thank You!
                     </button>
                   </div>
@@ -329,8 +568,8 @@ const Customization = () => {
                 }
               </div>
 
-              <div>
-                missed chat timer
+              <div className={styles.missedTimerDiv}>
+                <MissedTimer handleTimeDuration={handleTimeDuration} selectedTime={selectedTime} />
               </div>
             </div>
 
