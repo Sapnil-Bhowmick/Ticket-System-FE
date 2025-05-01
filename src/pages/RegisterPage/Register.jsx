@@ -76,7 +76,7 @@ const Register = () => {
 
   const validateInput = (field, minLength = null, maxLength = null, regex = null) => {
     const value = formStateData[field]
-    console.log(value)
+    // console.log(value)
     let isValid = true
 
     if (maxLength && value.trim().length > maxLength) {
@@ -87,7 +87,7 @@ const Register = () => {
           value: `${field} must be lesser than ${maxLength} characters`
         }
       })
-      console.log("Should be < maxLength")
+      // console.log("Should be < maxLength")
       isValid = false
     }
 
@@ -99,7 +99,7 @@ const Register = () => {
           value: field === "password" ? `${field} must have atleast 1 upperCase, 1 lowerCase, 1 digit, 1 special character` : `Invalid ${field}`
         }
       })
-      console.log("Regex did not match")
+      // console.log("Regex did not match")
       isValid = false
     }
 
@@ -112,7 +112,7 @@ const Register = () => {
           value: `${field} is required and must be atleast ${minLength} characters`
         }
       })
-      console.log("Should be > minLength")
+      // console.log("Should be > minLength")
       isValid = false
     }
 
@@ -125,7 +125,7 @@ const Register = () => {
             value: `${field} is required`
           }
         })
-        console.log("Field is Required")
+        // console.log("Field is Required")
         isValid = false
       }
     }
@@ -167,11 +167,11 @@ const Register = () => {
     }
 
     if (isFirstNameValid && isLastNameValid && isPasswordValid && isConfirmPassword & isEmailIDValid && is_PasswordsMatched && isChecked) {
-      // console.log(formStateData)
+      // // console.log(formStateData)
 
       try {
         const {confirmPasssword , ...dataObj} = formStateData
-        // console.log(dataObj)
+        // // console.log(dataObj)
         const res = await registerUser(dataObj)
         toast.success(res.message)
         navigate("/login")
@@ -200,7 +200,7 @@ const Register = () => {
     if (res.status === 200) {
       return res.data
     }
-    // console.log("RESPONSE", res)
+    // // console.log("RESPONSE", res)
   }
 
   return (

@@ -57,7 +57,7 @@ const Customization = () => {
 
 
   // const submitPlaceholderData = () => {
-  //   console.log(introForm)
+  //   // console.log(introForm)
   // }
 
 
@@ -71,7 +71,7 @@ const Customization = () => {
   }
 
   const handleCustomMsg = async (e, key) => {
-    console.log(e.target.value, key)
+    // console.log(e.target.value, key)
     if (e.key === 'Enter') {
       setCustomMessage((prev) => {
         return {
@@ -120,7 +120,7 @@ const Customization = () => {
   }
 
   const handleWelcomeMsgKeyDown = async (e) => {
-    console.log(e.target.value)
+    // console.log(e.target.value)
     if (e.key === 'Enter') {
       setWelcomeMessage((prev) => {
         return {
@@ -144,7 +144,7 @@ const Customization = () => {
   // ! ----------------------------- API ---------------------------------------
 
   const getCustomizations = async () => {
-    // console.log("inside get customizations api")
+    // // console.log("inside get customizations api")
     try {
       const res = await axios.get(api_constants.BASE_URL + api_constants.GET_CUSTOMIZATION)
 
@@ -153,7 +153,7 @@ const Customization = () => {
       //   index: memberID
       // }))
 
-      console.log("customizationData", customizationData)
+      // console.log("customizationData", customizationData)
 
       // * Set Values Fetched from DB
       setCustomizationID(customizationData._id)
@@ -209,7 +209,7 @@ const Customization = () => {
 
 
   const editCustomization = async (data) => {
-    console.log("inside edit customizations api")
+    // console.log("inside edit customizations api")
     try {
       const res = await axios.patch(
         api_constants.BASE_URL + api_constants.EDIT_CUSTOMIZATION + `/${customizationID}`,
@@ -226,7 +226,7 @@ const Customization = () => {
       //   index: memberID
       // }))
 
-      console.log("customizationData", customizationData)
+      // console.log("customizationData", customizationData)
 
       // * Set Values Fetched from DB
       // setCustomizationID(customizationData._id)
@@ -304,14 +304,14 @@ const Customization = () => {
       }
     }
 
-    console.log(data)
+    // console.log(data)
 
     await editCustomization(data)
   }
 
 
   const handleTimeDuration = async (hours, minutes, seconds) => {
-    // console.log(`${hours}:${minutes}:${seconds}`)
+    // // console.log(`${hours}:${minutes}:${seconds}`)
 
     const data = {
       missedChatDuration: {

@@ -9,23 +9,31 @@ import settingsIcon from "../../assets/icons/settings-icon.svg"
 import teamIcon from "../../assets/icons/team-icon.svg"
 
 import profileIcon from "../../assets/icons/profileIcon.svg"
-import { Link , useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { logoutUser } from "../../Redux/slices/userSlice"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { clearTicketData } from "../../Redux/slices/ticketSlice"
+import { useEffect } from "react"
 
 
-const SidebarNav = ({activePage}) => {
+const SidebarNav = ({ activePage }) => {
 
-    // console.log("activePage" , activePage)
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
+    const payload = useSelector((store) => store.USER.payload)
+    const token = useSelector((store) => store.USER.token)
+
     const handleLogout = () => {
         dispatch(logoutUser())
-        // dispatch(clearTicketData())
-        navigate("/")
+        dispatch(clearTicketData())
     }
+
+    useEffect(() => {
+        if (!token) {
+            navigate("/");
+        }
+    }, [token]);
 
     return (
         <nav className={styles.sidebarMain}>
@@ -48,10 +56,13 @@ const SidebarNav = ({activePage}) => {
                     <img src={chatbotIcon} alt="Go To Customization" />
                     {activePage === "ChatBot" && <span>Chat bot</span>}
                 </Link>
-                <Link to="/TeamMembers" className={styles.link}>
-                    <img src={teamIcon} alt="Go To Teams" />
-                    {activePage === "Team" && <span>Team</span>}
-                </Link>
+                {
+                    payload?.role === "ADMIN" ?
+                        <Link to="/TeamMembers" className={styles.link}>
+                            <img src={teamIcon} alt="Go To Teams" />
+                            {activePage === "Team" && <span>Team</span>}
+                        </Link> : null
+                }
                 <Link to="/Settings" className={styles.link}>
                     <img src={settingsIcon} alt="Go To Setttings" />
                     {activePage === "Settings" && <span>Seting</span>}

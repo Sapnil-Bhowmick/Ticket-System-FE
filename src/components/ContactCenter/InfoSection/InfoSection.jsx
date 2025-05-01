@@ -19,11 +19,13 @@ import { removeTicket, updateActiveTicketStatus } from "../../../Redux/slices/ti
 // import { clearActiveTicketMessages } from "../../../Redux/slices/messageSlice"
 
 
-const InfoSection = () => {
 
+const InfoSection = () => {
 
     const dispatch = useDispatch()
     const activeChat = useSelector((store) => store.TICKET.activeTicket)
+    const payload = useSelector((store) => store.USER.payload)
+    console.log("payload", payload)
     const { token, userInfo } = useSelector((store) => store.USER)
 
     const [showTeamMembers, setShowTeamMembers] = useState(false)
@@ -38,8 +40,11 @@ const InfoSection = () => {
 
 
     useEffect(() => {
-        getTeamMembers()
-    }, [])
+        if (!payload?.isMember && payload?.role === "ADMIN") {
+            console.log("Get Team Members")
+            getTeamMembers()
+        }
+    }, [payload])
 
 
 
@@ -55,12 +60,11 @@ const InfoSection = () => {
                 }
             )
 
-            //   console.log("RESPONSE", res)
+            const { data: teamMembers } = res.data
+            setTeamMembers(teamMembers)
 
-            const { data: ticketData } = res.data
-            setTeamMembers(ticketData)
+            // console.log("teamMembers", teamMembers)
 
-            //   console.log("ticketData" , ticketData)
         }
         catch (err) {
             toast.error("Unable to fetch Admin Team Members")
@@ -81,8 +85,6 @@ const InfoSection = () => {
                     }
                 }
             )
-
-            // console.log("RESPONSE" , res.data)
 
             dispatch(removeTicket({
                 ticketID: activeChat._id
@@ -129,20 +131,25 @@ const InfoSection = () => {
     }
 
     const handleAssignToTeamMember = (memberID) => {
+        console.log("MemberId" , memberID)
         setShowTeamMembers(false)
         setIsAssignToMember(true)
         setSelectedMemberID(memberID)
     }
 
     const handleAssignConfirm = async () => {
-        console.log("Assigned")
+        
+        if(!activeChat?._id){
+            return toast.error("Please select a chat")
+        }
+
         if (selectedMemberID) {
-            console.log("INSIDE")
+            // console.log("INSIDE")
             await assignTicket_toMember(selectedMemberID)
             setSelectedMemberID("")
             setShowTeamMembers(false)
             setIsAssignToMember(false)
-        }
+        } 
 
     }
 
@@ -152,8 +159,13 @@ const InfoSection = () => {
     }
 
     const handleStatusConfirm = (status) => {
+        setIsStatusSet(false)
+        if(!activeChat?._id){
+            return toast.error("Please select a chat")
+        }
+
         if (selectStatus) {
-            console.log("Resolved")
+            // console.log("Resolved")
             updateTicketStatus(selectStatus)
         }
     }
@@ -163,7 +175,7 @@ const InfoSection = () => {
             <div className={styles.infoWrapper}>
 
                 <div className={styles.userAvatar}>
-                    <img src={activeChat.creatorID.profilePic} alt="" />
+                    <img src={activeChat?.creatorID?.profilePic} alt="" />
                     <span>Chat</span>
                 </div>
 
@@ -171,30 +183,35 @@ const InfoSection = () => {
                     <p>Details</p>
                     <div className={styles.userAvatarPill}>
                         <img src={nameIcon} alt="" />
-                        {activeChat.creatorID.name}
+                        {activeChat?.creatorID?.name}
                     </div>
                     <div className={styles.userAvatarPill}>
                         <img src={callIcon} alt="" />
-                        {activeChat.creatorID.phone}
+                        {activeChat?.creatorID?.phone}
                     </div>
                     <div className={styles.userAvatarPill}>
                         <img src={emailIcon} alt="" />
-                        {activeChat.creatorID.emailID}
+                        {activeChat?.creatorID?.emailID}
                     </div>
                 </div>
 
                 <div className={styles.teamMembers}>
                     <p>Teammates</p>
                     <div className={styles.admin}>
-                        <img src={userInfo.profilePic} alt="" className={styles.avatar} />
-                        Joe Doe
-                        <img
-                            src={downArrow}
-                            alt=""
-                            className={styles.downArrow}
-                            onClick={() => setShowTeamMembers(!showTeamMembers)}
-                        />
+                        <img src={userInfo?.profilePic} alt="" className={styles.avatar} />
+                        {
+                            payload?.isMember ? `${userInfo?.userName}` : `${userInfo?.firstName} ${userInfo?.lastName}`
+                        }
+                        {
+                            payload?.role === "ADMIN" && !payload?.isMember ?
+                            <img
+                                src={downArrow}
+                                alt=""
+                                className={styles.downArrow}
+                                onClick={() => setShowTeamMembers(!showTeamMembers)}
+                            /> : null
 
+                        }
                         {
                             isAssignToMember &&
                             <Modal
@@ -244,7 +261,7 @@ const InfoSection = () => {
                                     setIsStatusSet(true)
                                     setSelectStatus("Resolved")
                                 }}
-                                style={{ backgroundColor: activeChat.status === "Resolved" && "#EFEFEF" }}
+                                style={{ backgroundColor: activeChat?.status === "Resolved" && "#EFEFEF" }}
                             >
                                 Resolved
                             </div>
@@ -254,7 +271,7 @@ const InfoSection = () => {
                                     setIsStatusSet(true)
                                     setSelectStatus("UnResolved")
                                 }}
-                                style={{ backgroundColor: activeChat.status === "UnResolved" && "#EFEFEF" }}
+                                style={{ backgroundColor: activeChat?.status === "UnResolved" && "#EFEFEF" }}
                             >
                                 Unresolved
                             </div>

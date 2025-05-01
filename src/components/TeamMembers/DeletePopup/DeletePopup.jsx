@@ -9,8 +9,8 @@ import toast from "react-hot-toast"
 
 const DeletePopup = ({setMemberId , activeMember , memberID}) => {
 
-    console.log("activeMember" , activeMember)
-    console.log("memberID" , memberID)
+    // console.log("activeMember" , activeMember)
+    // console.log("memberID" , memberID)
 
     const token = useSelector((Store) => Store.USER.token)
     const dispatch = useDispatch()
@@ -21,7 +21,7 @@ const DeletePopup = ({setMemberId , activeMember , memberID}) => {
     }
 
     const deleteTeamMember = async () => {
-        console.log("inside delete member api")
+        // console.log("inside delete member api")
         try {
           const res = await axios.delete(
             api_constants.BASE_URL + api_constants.DELETE_MEMBER + `?memberID=${activeMember._id}`,
@@ -37,7 +37,7 @@ const DeletePopup = ({setMemberId , activeMember , memberID}) => {
             index: memberID
           }))
 
-          console.log("RESPONSE" , res)
+          // console.log("RESPONSE" , res)
 
           toast.success(res.data.message)
     

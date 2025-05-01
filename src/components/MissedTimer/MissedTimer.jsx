@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './MissedTimer.module.css';
 
 const MissedTimer = ({handleTimeDuration , selectedTime={selectedTime}}) => {
-    console.log("selectedTime" , selectedTime)
+    // console.log("selectedTime" , selectedTime)
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(10);
   const [seconds, setSeconds] = useState(0);

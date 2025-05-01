@@ -115,8 +115,8 @@
 .teamMembers .admin .avatar {
     margin: 0px var(--spacing-md) 0px var(--spacing-sm);
     
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
 }
 
 .teamMembers .admin .downArrow {

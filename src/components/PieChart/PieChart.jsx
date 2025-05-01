@@ -6,7 +6,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 const PieChart = ({totalTickets , totalResolvedTickets}) => {
 
-  console.log(totalTickets , totalResolvedTickets)
+  // console.log(totalTickets , totalResolvedTickets)
   const totalunResolvedTickets = totalTickets - totalResolvedTickets
 
   const percentage_resolved = Math.round((totalResolvedTickets / totalTickets) * 100);

@@ -1,11 +1,16 @@
 import styles from "./SingleMessage.module.css"
 import userAvatar from "../../../assets/icons/userAvatar.svg"
 import { useSelector } from "react-redux"
+import { forwardRef } from "react"
 
-const SingleMessage = ({ isSender, message, index, msgIndex }) => {
+
+const SingleMessage = forwardRef(({ isSender, message, index, msgIndex, isFirstMessage }, ref) => {
 
     const activeChatNo = useSelector((store) => store.TICKET.activeChatNo)
     const activeTicket = useSelector((store) => store.TICKET.activeTicket)
+    const payload = useSelector((store) => store.USER.payload)
+
+    // // console.log("REF" , ref)
 
     return (
         <>
@@ -14,6 +19,7 @@ const SingleMessage = ({ isSender, message, index, msgIndex }) => {
                 style={{
                     justifyContent: isSender ? "flex-start" : "flex-end"
                 }}
+                ref={ref}
             >
 
                 <div
@@ -36,7 +42,10 @@ const SingleMessage = ({ isSender, message, index, msgIndex }) => {
                             }}
                         >
                             {
-                                !isSender ? `${message.senderID.firstName} ${message.senderID.lastName}` : `chat ${activeChatNo}`
+                                !isSender ?
+                                    payload.isMember ? `${message.senderID.userName}` : `${message.senderID.firstName} ${message.senderID.lastName}`
+                                    :
+                                    `chat ${activeChatNo}`
                             }
                         </p>
                         <p className={styles.query}>
@@ -47,11 +56,11 @@ const SingleMessage = ({ isSender, message, index, msgIndex }) => {
             </div>
 
             {
-                activeTicket.isMissed && index === msgIndex && <p className={styles.missedChat}>Replying to missed chat</p>
+                activeTicket.isMissed && isFirstMessage && <p className={styles.missedChat}>Replying to missed chat</p>
             }
 
         </>
     )
-}
+})
 
 export default SingleMessage

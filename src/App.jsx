@@ -8,65 +8,64 @@ import Dashboard from "./pages/DashboardPage/Dashboard.jsx"
 import Customization from "./pages/CustomizationPage/Customization.jsx"
 import ContactCenter from "./pages/ContactCenterPage/ContactCenter.jsx"
 import Analytics from "./pages/AnalyticsPage/Analytics.jsx"
-import NotFound from "./pages/NotFound/NotFound.jsx";
-import Welcome from "./pages/WelcomePage/Welcome.jsx"
 import HomePage from "./pages/HomePage/HomePage.jsx";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
+import NotFound from "./pages/NotFound/NotFound.jsx"
 
 import { jwtDecode } from "jwt-decode";
-import { useMemo } from "react";
+import { addPayload } from "./Redux/slices/userSlice.js";
 
 
-const AppRouter = (token) => createBrowserRouter([
+
+const AppRouter = (token , isMember , isAdmin) => createBrowserRouter([
     {
         path: "/",
-        element: <Welcome />
+        element: token ? <Navigate to="/Dashboard" /> : <HomePage />
     },
 
     {
         path: "/Login",
-        element: token ? <Navigate to="/dashboard" /> : <Login />
+        element: token ? <Navigate to="/Dashboard" /> : <Login />
     },
 
     {
         path: "/Register",
-        element: token ? <Navigate to="/dashboard" /> : <Register />
+        element: token ? <Navigate to="/Dashboard" /> : <Register />
     },
 
     {
         path: "/Settings",
-        element: <Settings />
+        element: token ? <Settings /> : <Navigate to="/Login" />
     },
 
     {
         path: "/TeamMembers",
-        element: <TeamMembers />
+        element: token
+            ? (isMember && !isAdmin
+                ? <NotFound /> 
+                : <TeamMembers />)
+            : <Navigate to="/Login" />,
     },
 
     {
         path: "/Dashboard",
-        element: <Dashboard />
+        element: token ? <Dashboard /> : <Navigate to="/Login" />
     },
 
     {
         path: "/Customization",
-        element: <Customization />
+        element: token ? <Customization /> : <Navigate to="/Login" />
     },
 
     {
         path: "/ContactCenter",
-        element: <ContactCenter />
+        element: token ? <ContactCenter /> : <Navigate to="/Login" />
     },
 
     {
         path: "/Analytics",
-        element: <Analytics />
-    },
-
-    {
-        path: "/User",
-        element: <HomePage />
+        element: token ? <Analytics /> : <Navigate to="/Login" />
     },
 
     {
@@ -75,112 +74,35 @@ const AppRouter = (token) => createBrowserRouter([
     }
 ])
 
-
-const MemberRouter = (token) => createBrowserRouter([
-    {
-        path: "/",
-        element: <Welcome />
-    },
-
-    {
-        path: "/Login",
-        element: token ? <Navigate to="/dashboard" /> : <Login />
-    },
-
-    {
-        path: "/Register",
-        element: token ? <Navigate to="/dashboard" /> : <Register />
-    },
-
-    {
-        path: "/Settings",
-        element: <Settings />
-    },
-
-    {
-        path: "/Dashboard",
-        element: <Dashboard />
-    },
-
-    {
-        path: "/Customization",
-        element: <Customization />
-    },
-
-    {
-        path: "/ContactCenter",
-        element: <ContactCenter />
-    },
-
-    {
-        path: "/Analytics",
-        element: <Analytics />
-    },
-
-    {
-        path: "*",
-        element: <NotFound />
-    }
-])
-
-
-const PublicRouter = () => createBrowserRouter([
-    {
-        path: "/",
-        element: <HomePage />
-    },
-
-    {
-        path: "/Login",
-        element: <Login />
-    },
-
-    {
-        path: "/Register",
-        element: <Register />
-    },
-
-    {
-        path: "*",
-        element: <NotFound />
-    }
-])
 
 
 
 const App = () => {
+    const token = useSelector((store) => store.USER.token);
+    const dispatch = useDispatch()
 
-    const token = useSelector((store) => store.USER.token)
-    // console.log("token", token)
+    let isMember = false;
+    let isAdmin = false;
 
-    const navRouter = useMemo(() => {
-        let payload = null;
+    if (token) {
         try {
-            payload = token ? jwtDecode(token) : null;
-            console.log("payloadData", payload);
-        } catch (e) {
+            const decoded = jwtDecode(token);
+            isMember = decoded.isMember;
+            isAdmin = decoded.role === "ADMIN";
+
+            dispatch(addPayload({
+                data: decoded
+            }))
+        } catch (err) {
             console.error("Invalid token");
         }
+    }
 
-        if (payload?.role === "ADMIN" && !payload.isMember) {
-            console.log("Default Admin");
-            return AppRouter(token);
-        } else if (payload?.role === "ADMIN" && payload.isMember) {
-            console.log("Member Admin");
-            return AppRouter(token);
-        } else if (payload?.role === "MEMBER" && payload.isMember) {
-            console.log("Normal Member");
-            return MemberRouter(token);
-        } else {
-            console.log("Normal Users -> Raising Queries");
-            return PublicRouter();
-        }
-    }, [token]);
+    console.log("isMember" , isMember)
+    console.log("isAdmin" , isAdmin)
 
-    return (
-        <RouterProvider router={navRouter} />
-    )
-}
+    return <RouterProvider router={AppRouter(token , isMember , isAdmin)} />
+};
 
 
 

@@ -24,4 +24,6 @@ export const api_constants = {
     "ADD_USER": "/user/add",
     "USER_SEND_QUERY": "/message/user/send",
     "GET_USER_MESSAGES": "/message/user/all",
+
+    "EDIT_PROFILE" : "/profile/edit"
 }

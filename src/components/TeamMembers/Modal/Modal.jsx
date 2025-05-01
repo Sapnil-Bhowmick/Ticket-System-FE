@@ -13,15 +13,15 @@ import toast from "react-hot-toast"
 
 const Modal = ({ isEdit, setIsModalOpen, memberData = null, activeIndex = null }) => {
 
-    // console.log("data ", memberData)
-    // console.log("index" , activeIndex)
+    // // console.log("data ", memberData)
+    // // console.log("index" , activeIndex)
 
     const dispatch = useDispatch()
     const [isOpenDropdown, setIsOpenDropdown] = useState(false)
 
     const token = useSelector((store) => store.USER.token)
 
-    //   console.log("isOpenDropdown" , isOpenDropdown)
+    //   // console.log("isOpenDropdown" , isOpenDropdown)
 
     const [formdata, setFormData] = useState({
         userName: "",
@@ -50,7 +50,7 @@ const Modal = ({ isEdit, setIsModalOpen, memberData = null, activeIndex = null }
 
     const validateInput = (field, minLength = null, maxLength = null, regex = null) => {
         const value = formdata[field]
-        console.log(value)
+        // console.log(value)
         let isValid = true
 
         if (maxLength && value.trim().length > maxLength) {
@@ -60,7 +60,7 @@ const Modal = ({ isEdit, setIsModalOpen, memberData = null, activeIndex = null }
                     [field]: `${field} must be lesser than ${maxLength} characters`
                 }
             })
-            console.log("Should be < maxLength")
+            // console.log("Should be < maxLength")
             isValid = false
         }
 
@@ -71,7 +71,7 @@ const Modal = ({ isEdit, setIsModalOpen, memberData = null, activeIndex = null }
                     [field]: field === "emailID" ? `Please provide a valid ${field}` : `Please provide a valid Phone No`
                 }
             })
-            console.log("Regex did bot match")
+            // console.log("Regex did bot match")
             isValid = false
         }
 
@@ -83,7 +83,7 @@ const Modal = ({ isEdit, setIsModalOpen, memberData = null, activeIndex = null }
                     [field]: `${field} is required and must be atleast ${minLength} characters`
                 }
             })
-            console.log("Should be > minLength")
+            // console.log("Should be > minLength")
             isValid = false
         }
 
@@ -95,7 +95,7 @@ const Modal = ({ isEdit, setIsModalOpen, memberData = null, activeIndex = null }
                         [field]: `${field} is required`
                     }
                 })
-                console.log("Field is Required")
+                // console.log("Field is Required")
                 isValid = false
             }
         }
@@ -107,7 +107,7 @@ const Modal = ({ isEdit, setIsModalOpen, memberData = null, activeIndex = null }
 
 
     const addMember = async (data) => {
-        console.log("inside add member api")
+        // console.log("inside add member api")
         try {
             const res = await axios.post(
                 api_constants.BASE_URL + api_constants.ADD_MEMBER,
@@ -137,7 +137,7 @@ const Modal = ({ isEdit, setIsModalOpen, memberData = null, activeIndex = null }
     }
 
     const editMember = async (data) => {
-        console.log("inside edit member api")
+        // console.log("inside edit member api")
         try {
             const res = await axios.post(
                 api_constants.BASE_URL + api_constants.EDIT_MEMBER + `?memberID=${memberData._id}`,
@@ -151,7 +151,7 @@ const Modal = ({ isEdit, setIsModalOpen, memberData = null, activeIndex = null }
 
             const { data: ticketData } = res.data
 
-            console.log("RESPONSE", ticketData)
+            // console.log("RESPONSE", ticketData)
 
             dispatch(updateMember({
                 index: activeIndex,
@@ -189,7 +189,7 @@ const Modal = ({ isEdit, setIsModalOpen, memberData = null, activeIndex = null }
                 role: formdata.role
             }
 
-            // console.log(newMemberData)
+            // // console.log(newMemberData)
             await addMember(newMemberData)
         }
 
@@ -230,8 +230,8 @@ const Modal = ({ isEdit, setIsModalOpen, memberData = null, activeIndex = null }
         // }
 
 
-        // console.log("isEmailIDValid" , isEmailIDValid)
-        // console.log("isPhoneValid" , isPhoneValid)
+        // // console.log("isEmailIDValid" , isEmailIDValid)
+        // // console.log("isPhoneValid" , isPhoneValid)
 
         // if(formdata.emailID){
         //     if(isEmailIDValid){

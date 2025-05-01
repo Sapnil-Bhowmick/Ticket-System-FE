@@ -11,6 +11,7 @@ import axios from "axios";
 
 import { add_all_tickets } from "../../Redux/slices/ticketSlice";
 import { api_constants } from "../../utils/api_constants";
+import { formatDate } from "../../utils/dateTime";
 
 
 const DashboardArea = () => {
@@ -28,10 +29,12 @@ const DashboardArea = () => {
     const token = useSelector((store) => store.USER.token)
     const { all_tickets, resolved_tickets, unresolved_tickets } = useSelector((store) => store.TICKET)
 
+    const [allTickets, setAllTickets] = useState()
+
     const ticketTypeArr =
         activeTab === 0 ? all_tickets : activeTab === 1 ? resolved_tickets : activeTab === 2 ? unresolved_tickets : null
 
-    // console.log("token", token)
+    // // console.log("token", token)
 
     useEffect(() => {
         getAllTickets()
@@ -39,9 +42,18 @@ const DashboardArea = () => {
 
 
     const handleSearchTicket = () => {
-        if(all_tickets && all_tickets.length !== 0){
-            if(search.trim().length > 0){
-                const filteredTickets = all_tickets.filter((ticket))
+        if (allTickets && allTickets.length !== 0) {
+            if (search.trim().length > 0) {
+                const filteredTickets = allTickets.filter((ticket) => formatDate(ticket.createdAt).includes(search))
+                // console.log("filteredTickets", filteredTickets)
+
+                dispatch(add_all_tickets({
+                    data: filteredTickets
+                }))
+            } else {
+                dispatch(add_all_tickets({
+                    data: allTickets
+                }))
             }
         }
     }
@@ -63,7 +75,9 @@ const DashboardArea = () => {
                 data: ticketData
             }))
 
-            // console.log(res.data)
+            setAllTickets(ticketData)
+
+            // // console.log(res.data)
         }
         catch (err) {
             toast.error("Unable to fetch tickets")
@@ -81,6 +95,11 @@ const DashboardArea = () => {
                         placeholder="Search for ticket"
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
+                        onKeyDown={(e) => {
+                            if (e.key === "Enter") {
+                                handleSearchTicket()
+                            }
+                        }}
                     />
                     <img src={SearchIcon} alt="" className={styles.search} onClick={handleSearchTicket} />
                 </div>

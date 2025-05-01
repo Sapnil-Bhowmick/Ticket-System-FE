@@ -19,11 +19,11 @@ const ChatSection = () => {
 
   useEffect(() => {
     getAllTickets()
-    console.log("in useEffect -> chatSection")
+    // console.log("in useEffect -> chatSection")
   }, [activeTicket])
 
   const getAllTickets = async () => {
-    console.log("inside getAllTickets")
+    // console.log("inside getAllTickets")
     try {
       const res = await axios.get(
         api_constants.BASE_URL + api_constants.TICKET_ALL,
@@ -34,14 +34,14 @@ const ChatSection = () => {
         }
       )
 
-      console.log("RESPONSE", res)
+      // console.log("RESPONSE", res)
 
       const { data: ticketData } = res.data
       dispatch(add_all_tickets({
         data: ticketData
       }))
 
-      // console.log(res.data)
+      // // console.log(res.data)
     }
     catch (err) {
       toast.error("Unable to fetch Chats")

@@ -108,7 +108,7 @@ const Login = () => {
         const res = await loginUser(formStateData)
         toast.success(res.message)
         const {token , user} = res.data
-        // console.log(token , user)
+        // // console.log(token , user)
         dispatchAction(saveLoggedInUserDetails({
           token,
           userInfo: user
@@ -141,11 +141,11 @@ const Login = () => {
     if (res.status === 200) {
       return res.data
     }
-    // console.log("RESPONSE", res)
+    // // console.log("RESPONSE", res)
   }
 
 
-  // console.log("ADMIN_DETAILS" , adminDetails)
+  // // console.log("ADMIN_DETAILS" , adminDetails)
 
 
   return (

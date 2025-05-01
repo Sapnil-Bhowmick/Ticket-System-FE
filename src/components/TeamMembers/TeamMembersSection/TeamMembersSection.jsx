@@ -44,7 +44,7 @@ const TeamMembersSection = ({ setIsModalOpen, isModalOpen }) => {
   }, [])
 
   const getTeamMembers = async () => {
-    console.log("inside getmemebers api")
+    // console.log("inside getmemebers api")
     try {
       const res = await axios.get(
         api_constants.BASE_URL + api_constants.TEAM_MEMBERS_ALL,

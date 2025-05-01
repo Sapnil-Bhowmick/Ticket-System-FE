@@ -1,6 +1,9 @@
 import Company from "../../components/WelcomePageComponents/Company/Company.jsx"
 import Hero from "../../components/WelcomePageComponents/Hero/Hero.jsx"
 import Nav from "../../components/WelcomePageComponents/Navigation/Nav.jsx"
+import About from "../../components/WelcomePageComponents/About/About.jsx"
+import PricingPlan from "../../components/WelcomePageComponents/PricingPlan/PricingPlan.jsx"
+import Footer from "../../components/WelcomePageComponents/Footer/Footer.jsx"
 
 import hublyLogo from "../../assets/icons/hubly-logo-noborder.svg"
 import crossIcon from "../../assets/icons/cross.svg"
@@ -20,12 +23,13 @@ import { useDispatch, useSelector } from "react-redux"
 import { addQuery, addQueryUser, appendQuery } from "../../Redux/slices/querySlice.js"
 
 
+
 const HomePage = () => {
 
     const lastMessageRef = useRef(null)
     const dispatch = useDispatch()
     const { myQuery, queryUserInfo } = useSelector((store) => store.QUERY)
-    // console.log("queryUserInfo", queryUserInfo)
+    // // console.log("queryUserInfo", queryUserInfo)
     const [isMessageBoxOpen, setIsMessageBoxOpen] = useState(true)
     // const [isChatStarted, setIsChatStarted] = useState(false)
     const [introForm, setIntroForm] = useState({
@@ -67,10 +71,10 @@ const HomePage = () => {
     useEffect(() => {
         // * Auto scroll to the latest chat
         if (lastMessageRef.current) {
-            console.log("Scolling...")
+            // console.log("Scolling...")
             lastMessageRef.current.scrollIntoView({ behavior: "smooth" });
         }
-    }, [myQuery , isMessageBoxOpen]);
+    }, [myQuery, isMessageBoxOpen]);
 
 
     const handleInputChange = (e) => {
@@ -89,7 +93,7 @@ const HomePage = () => {
                 message
             }
 
-            // console.log(data)
+            // // console.log(data)
             sendQuery(data)
             setMessage("")
         }
@@ -98,7 +102,7 @@ const HomePage = () => {
 
     const validateInput = (field, minLength = null, maxLength = null, regex = null) => {
         const value = introForm[field]
-        // console.log("value", `${field}: ${value}`)
+        // // console.log("value", `${field}: ${value}`)
         let isValid = true
 
         if (maxLength && value.trim().length > maxLength) {
@@ -108,7 +112,7 @@ const HomePage = () => {
                     [field]: `${field} must be lesser than ${maxLength} characters`
                 }
             })
-            // console.log("Should be < maxLength")
+            // // console.log("Should be < maxLength")
             isValid = false
         }
 
@@ -119,7 +123,7 @@ const HomePage = () => {
                     [field]: `Invalid ${field}`
                 }
             })
-            // console.log("Regex did not match")
+            // // console.log("Regex did not match")
             isValid = false
         }
 
@@ -131,7 +135,7 @@ const HomePage = () => {
                     [field]: `${field} is required and must be atleast ${minLength} characters`
                 }
             })
-            // console.log("Should be > minLength")
+            // // console.log("Should be > minLength")
             isValid = false
         }
 
@@ -143,7 +147,7 @@ const HomePage = () => {
                         [field]: `${field} is required`
                     }
                 })
-                // console.log("Field is Required")
+                // // console.log("Field is Required")
                 isValid = false
             }
         }
@@ -178,7 +182,7 @@ const HomePage = () => {
     // ! ------------------------- API -----------------------------------
 
     const addUser = async (data) => {
-        // console.log("inside get customizations api")
+        // // console.log("inside get customizations api")
         try {
             const res = await axios.post(api_constants.BASE_URL + api_constants.ADD_USER, data)
 
@@ -188,7 +192,7 @@ const HomePage = () => {
                 data: userData
             }))
 
-            // console.log("userData", userData)
+            // // console.log("userData", userData)
 
             toast.success(res.data.message)
 
@@ -202,13 +206,13 @@ const HomePage = () => {
     }
 
     const getCustomizations = async () => {
-        // console.log("inside get customizations api")
+        // // console.log("inside get customizations api")
         try {
             const res = await axios.get(api_constants.BASE_URL + api_constants.GET_CUSTOMIZATION)
 
             const { data: customizationData } = res.data
 
-            // console.log("customizationData", customizationData)
+            // // console.log("customizationData", customizationData)
 
             // * Set Values Fetched from DB
             setCustomization({
@@ -237,13 +241,13 @@ const HomePage = () => {
     }
 
     const getMessages = async () => {
-        // console.log("inside get customizations api")
+        // // console.log("inside get customizations api")
         try {
             const res = await axios.get(api_constants.BASE_URL + api_constants.GET_USER_MESSAGES + `/${queryUserInfo._id}`)
 
             const { data: messages } = res.data
 
-            // console.log("messages", messages)
+            // // console.log("messages", messages)
 
             dispatch(addQuery({
                 data: messages
@@ -261,13 +265,13 @@ const HomePage = () => {
     }
 
     const sendQuery = async (data) => {
-        console.log("inside sendquery api")
+        // console.log("inside sendquery api")
         try {
             const res = await axios.post(api_constants.BASE_URL + api_constants.USER_SEND_QUERY + `/${queryUserInfo._id}`, data)
 
             const { data: queryData } = res.data
 
-            console.log("queryData", queryData)
+            // console.log("queryData", queryData)
 
             dispatch(appendQuery({
                 data: queryData
@@ -290,6 +294,9 @@ const HomePage = () => {
                 <Nav />
                 <Hero />
                 <Company />
+                <About />
+                <PricingPlan />
+                <Footer />
 
                 {/* ChatBot */}
                 <div className={styles.chatBot}>
@@ -381,7 +388,7 @@ const HomePage = () => {
                                             }
 
                                             {
-                                                !myQuery && queryUserInfo && 
+                                                !myQuery && queryUserInfo &&
                                                 <div className={styles.messagePrompt}>
                                                     <div className={styles.promptMain}>
                                                         <img src={hublyLogo} alt="" />
@@ -400,7 +407,7 @@ const HomePage = () => {
 
                                             {
                                                 myQuery && myQuery.length !== 0 &&
-                                                myQuery.map((query , index) => {
+                                                myQuery.map((query, index) => {
 
                                                     return (
                                                         <div

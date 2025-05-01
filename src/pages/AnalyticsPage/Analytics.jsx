@@ -35,7 +35,7 @@ const Analytics = () => {
 
 
   const getAnalytics = async () => {
-    console.log("inside add member api")
+    // console.log("inside add member api")
     try {
       const res = await axios.get(
         api_constants.BASE_URL + api_constants.GET_ALL_ANALYTICS,
