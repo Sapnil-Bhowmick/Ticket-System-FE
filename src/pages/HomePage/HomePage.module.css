@@ -505,6 +505,9 @@
     .chatBot {
         width: 100%;
 
+        z-index: 5;
+        border: 1px solid blue;
+
         padding: 0px 15px;
         right: 0px;
         bottom: 0px;

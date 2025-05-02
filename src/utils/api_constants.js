@@ -1,5 +1,5 @@
 export const api_constants = {
-    "BASE_URL": "http://localhost:5000/api/V1",
+    "BASE_URL": "https://ticket-system-hubly.onrender.com/api/V1",
 
     "ADMIN_REGISTER": "/auth/register",
     "ADMIN_LOGIN" : "/auth/login",
