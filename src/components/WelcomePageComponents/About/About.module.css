@@ -160,3 +160,26 @@
     left: -17px;
     z-index: -1;
 }
+
+
+
+
+
+@media only screen and (max-width: 1240px){
+    .right > .aboutLogo > .pyramid {
+        width: 370px;
+    }
+
+    .AboutMain > .AboutWrapper .features .aboutLogo .socialIcon {
+        top: -10px;
+        left: 89px;
+    }
+}
+
+
+
+@media only screen and (max-width: 576px) {
+    .AboutMain {
+        display: none;
+    } 
+}

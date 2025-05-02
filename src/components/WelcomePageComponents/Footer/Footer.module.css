@@ -90,3 +90,23 @@
 .socialIcons > img:hover {
     cursor: pointer;
 }
+
+
+
+
+
+
+@media only screen and (max-width: 1030px){ 
+    .footerMain > .footerWrapper > nav > div:last-of-type {
+        margin: 0px;
+    }
+}
+
+
+
+
+@media only screen and (max-width: 576px) {
+    .footerMain {
+        display: none;
+    } 
+}

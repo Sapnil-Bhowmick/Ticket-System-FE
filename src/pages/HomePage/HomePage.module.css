@@ -470,6 +470,18 @@
 
 
 
+
+
+
+
+@media only screen and (max-width: 980px) {
+    .HomePageMain > .HomePageWrapper {
+        padding: 0px 20px;
+    }
+}
+
+
+
 @media only screen and (max-width: 576px) {
     .HomePageMain {
         background-color: #fff;
@@ -520,7 +532,8 @@
     }
 
     .chatBot .chatBotWrapper .crossIcon {
-        top: 51px;
+        /* top: 51px; */
+        top: 32px;
         right: 19px;
         z-index: 1;
     }
@@ -541,5 +554,20 @@
 
     .chatBot .chatBotWrapper .logo {
         top: -138px;
+    }
+
+    .chatBot .chatBotWrapper .crossIcon {
+        top: -116px;
+    }
+}
+
+
+@media only screen and (max-width: 350px){
+    .chatBot {
+        bottom: 100px;
+    }
+
+    .chatBot .chatBotWrapper .crossIcon {
+        top: -15px;
     }
 }

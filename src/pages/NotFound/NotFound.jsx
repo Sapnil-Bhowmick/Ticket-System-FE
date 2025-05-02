@@ -17,7 +17,7 @@ const NotFound = () => {
 
     return (
         <div className={styles.container}>
-            <h1 className={styles.title}>404 - Page Not Found</h1>
+            <h1 className={styles.title}>Page Not Found</h1>
             <p className={styles.subtitle}>Sorry, the page you're looking for doesn't exist.</p>
             <button className={styles.button} onClick={handleNavigate}>
                 {token ? "Go To Dashboard" : "Go Home"}

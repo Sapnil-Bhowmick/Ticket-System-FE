@@ -37,7 +37,7 @@ const About = () => {
 
                     <div className={styles.right}>
                         <div className={styles.aboutLogo}>
-                            <img src={Pyramid} alt="" />
+                            <img src={Pyramid} alt="" className={styles.pyramid} />
                             <img src={SocialIcons} alt="" className={styles.socialIcon}/>
                             <img src={aboutBg} alt="" className={styles.bg} />
                         </div>

@@ -119,7 +119,16 @@ const MessageSection = () => {
                     activeTicket && activeTicket.status !== "Resolved" && (
                         <div className={styles.typeMessageDiv}>
                             <div>
-                                <textarea placeholder="Type here" value={inputMessage} onChange={(e) => setInputMessage(e.target.value)} />
+                                <textarea 
+                                placeholder="Type here" 
+                                value={inputMessage} 
+                                onChange={(e) => setInputMessage(e.target.value)} 
+                                onKeyDown={(e) => {
+                                    if(e.key === "Enter"){
+                                        handleSendMessage()
+                                    }
+                                }}
+                                />
                                 <img src={sendIcon} alt="" className={styles.sendIcon} onClick={handleSendMessage} />
                             </div>
                         </div>

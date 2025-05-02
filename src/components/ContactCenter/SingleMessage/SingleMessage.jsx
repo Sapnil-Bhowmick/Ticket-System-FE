@@ -56,7 +56,7 @@ const SingleMessage = forwardRef(({ isSender, message, index, msgIndex, isFirstM
             </div>
 
             {
-                activeTicket.isMissed && isFirstMessage && <p className={styles.missedChat}>Replying to missed chat</p>
+                activeTicket?.isMissed && isFirstMessage && <p className={styles.missedChat}>Replying to missed chat</p>
             }
 
         </>

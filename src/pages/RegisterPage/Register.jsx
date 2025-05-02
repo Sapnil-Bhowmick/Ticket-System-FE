@@ -6,6 +6,8 @@ import logo from "../../assets/icons/logo.svg"
 import { Link, useNavigate } from "react-router-dom"
 import { useReducer, useState } from "react"
 
+import PulseLoader from "react-spinners/PulseLoader"
+
 import axios from "axios"
 import toast from "react-hot-toast"
 import { api_constants } from "../../utils/api_constants"
@@ -62,6 +64,7 @@ const Register = () => {
   const [formStateData, dispatch] = useReducer(formStateReducer, intialFormState)
   const [errorState, errDispatch] = useReducer(errorStateReducer, initialErrorState)
   const [isChecked, setIsChecked] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleUpdate = (e) => {
     dispatch({
@@ -169,8 +172,9 @@ const Register = () => {
     if (isFirstNameValid && isLastNameValid && isPasswordValid && isConfirmPassword & isEmailIDValid && is_PasswordsMatched && isChecked) {
       // // console.log(formStateData)
 
+      setIsLoading(true)
       try {
-        const {confirmPasssword , ...dataObj} = formStateData
+        const { confirmPasssword, ...dataObj } = formStateData
         // // console.log(dataObj)
         const res = await registerUser(dataObj)
         toast.success(res.message)
@@ -178,9 +182,12 @@ const Register = () => {
       }
       catch (err) {
         const errMessage = err?.response?.data?.error?.message
-        if(errMessage){
+        if (errMessage) {
           toast.error(errMessage)
         }
+      }
+      finally {
+        setIsLoading(false)
       }
 
     }
@@ -247,9 +254,14 @@ const Register = () => {
                   and <span>Privacy Policy</span> </label>
               </div>
 
-              <button className={styles.registerBtn} onClick={(e) => handleRegister(e)}>
-                Create an account
-              </button>
+              {
+                isLoading ?
+                  <PulseLoader size={15} color={"rgba(17, 17, 17, 0.25)"} className={styles.loader} /> :
+                  <button className={styles.registerBtn} onClick={(e) => handleRegister(e)}>
+                    Create an account
+                  </button>
+              }
+
             </form>
           </div>
 

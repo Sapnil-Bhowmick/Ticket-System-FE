@@ -4,8 +4,10 @@ import styles from "./Login.module.css"
 import login_register_img from "../../assets/images/login_register.png"
 import logo from "../../assets/icons/logo.svg"
 import { Link, useNavigate } from "react-router-dom"
-import { useReducer } from "react"
+import { useReducer, useState } from "react"
 import axios from "axios"
+
+import PulseLoader from "react-spinners/PulseLoader"
 
 import { useDispatch, useSelector } from "react-redux"
 import { saveLoggedInUserDetails } from "../../Redux/slices/userSlice"
@@ -53,22 +55,24 @@ const errorStateReducer = (state, action) => {
 
 const Login = () => {
 
-    const navigate = useNavigate()
-    const [formStateData, dispatch] = useReducer(formStateReducer, intialFormState)
-    const [errorState, errDispatch] = useReducer(errorStateReducer, initialErrorState)
+  const navigate = useNavigate()
+  const [formStateData, dispatch] = useReducer(formStateReducer, intialFormState)
+  const [errorState, errDispatch] = useReducer(errorStateReducer, initialErrorState)
 
-    const dispatchAction = useDispatch()
-    const userDetails = useSelector((store) => store.USER)
+  const [isLoading, setIsLoading] = useState(false)
 
-    
-    const handleUpdate = (e) => {
-      dispatch({
-          type: "UPDATE_DATA",
-          payload: {
-              field: e.target.name,
-              value: e.target.value
-          }
-      })
+  const dispatchAction = useDispatch()
+  const userDetails = useSelector((store) => store.USER)
+
+
+  const handleUpdate = (e) => {
+    dispatch({
+      type: "UPDATE_DATA",
+      payload: {
+        field: e.target.name,
+        value: e.target.value
+      }
+    })
   }
 
 
@@ -93,7 +97,7 @@ const Login = () => {
     return isValid
   }
 
-  const handleLogin = async(e) => {
+  const handleLogin = async (e) => {
     e.preventDefault()
 
     errDispatch({
@@ -103,11 +107,14 @@ const Login = () => {
     let isUsernameValid = validateInput("emailID")
     let isPasswordValid = validateInput("password")
 
-    if(isPasswordValid && isUsernameValid){
-      try{
+    if (isPasswordValid && isUsernameValid) {
+
+      setIsLoading(true)
+
+      try {
         const res = await loginUser(formStateData)
         toast.success(res.message)
-        const {token , user} = res.data
+        const { token, user } = res.data
         // // console.log(token , user)
         dispatchAction(saveLoggedInUserDetails({
           token,
@@ -121,11 +128,15 @@ const Login = () => {
         })
 
       }
-      catch(err){
+      catch (err) {
         const errMessage = err?.response?.data?.error?.message
         if (errMessage) {
-            toast.error(errMessage)
+          toast.error(errMessage)
         }
+      }
+
+      finally {
+        setIsLoading(false)
       }
     }
   }
@@ -169,9 +180,14 @@ const Login = () => {
                 <input type="password" id="lastName" name="password" value={formStateData.password} onChange={handleUpdate} />
                 {errorState.password && <p className={styles.error}>{errorState.password}</p>}
               </div>
-              <button className={styles.loginBtn} onClick={(e) => handleLogin(e)}>
-                Log in
-              </button>
+
+              {
+                isLoading ?
+                  <PulseLoader size={15} color={"rgba(17, 17, 17, 0.25)"} className={styles.loader} /> :
+                  <button className={styles.loginBtn} onClick={(e) => handleLogin(e)}>
+                    Log in
+                  </button>
+              }
 
               <Link to="" className={styles.forgotPasswordLink}>Forgot password?</Link>
               <p className={styles.accountText}>Don't have an account?<Link to="/register" className={styles.signUpLink}> Sign up</Link></p>

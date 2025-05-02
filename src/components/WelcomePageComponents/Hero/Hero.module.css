@@ -125,7 +125,7 @@
     /* border: 1px solid red; */
 }
 
-.HeroMain > .HeroWrapper .right .HeroImgDiv {
+.HeroMain>.HeroWrapper .right .HeroImgDiv {
     width: 492.3px;
     height: 577.25px;
     /* overflow: hidden; */
@@ -136,7 +136,7 @@
     position: relative;
 }
 
-.HeroMain > .HeroWrapper .right .HeroImg {
+.HeroMain>.HeroWrapper .right .HeroImg {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -144,7 +144,7 @@
     z-index: -1;
 }
 
-.HeroMain > .HeroWrapper .right .bgLarge {
+.HeroMain>.HeroWrapper .right .bgLarge {
     position: absolute;
     top: -233px;
     left: -163px;
@@ -152,7 +152,7 @@
     z-index: -1;
 }
 
-.HeroMain > .HeroWrapper .right .bgSmall {
+.HeroMain>.HeroWrapper .right .bgSmall {
     position: absolute;
     top: -179px;
     left: 174px;
@@ -160,7 +160,7 @@
     z-index: -1;
 }
 
-.HeroMain > .HeroWrapper .right .card1 {
+.HeroMain>.HeroWrapper .right .card1 {
     width: 285.36px;
 
     position: absolute;
@@ -168,7 +168,7 @@
     right: -88px;
 }
 
-.HeroMain > .HeroWrapper .right .card2 {
+.HeroMain>.HeroWrapper .right .card2 {
     position: absolute;
     bottom: 72px;
     right: -121px;
@@ -178,8 +178,59 @@
 
 
 
+@media only screen and (max-width: 1030px) {
+    .HeroMain>.HeroWrapper>.right>.HeroImgDiv {
+        /* width: 359.3px; */
+        transform: translateX(-130px);
+    }
+
+    .HeroMain h1 {
+        font-size: 45px;
+    }
+}
+
+
+@media only screen and (max-width: 980px) {
+    .HeroMain>.HeroWrapper {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        /* border: 1px solid red; */
+    }
+
+    .HeroMain>.HeroWrapper>.right>.HeroImgDiv {
+        /* width: 359.3px; */
+        transform: translateX(-94px);
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    .HeroMain>.HeroWrapper .left p {
+        text-align: center;
+    }
+
+    .HeroMain>.HeroWrapper .btnContainer {
+        width: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    } 
+
+    .HeroMain > .HeroWrapper {
+        padding: 0px;
+    }
+
+    .HeroMain > .HeroWrapper .left {
+        margin: 0px 0px calc(var(--spacing-xl) * 1.5) 0px;
+    }
+}
+
+
 @media only screen and (max-width: 576px) {
     .HeroMain {
         display: none;
-    } 
+    }
 }

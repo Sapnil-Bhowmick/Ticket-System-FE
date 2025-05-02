@@ -37,6 +37,7 @@ const DashboardArea = () => {
     // // console.log("token", token)
 
     useEffect(() => {
+        console.log("Get all tickets")
         getAllTickets()
     }, [])
 

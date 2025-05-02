@@ -117,3 +117,61 @@ h2 {
     justify-content: center;
     align-items: center;
 }
+
+
+
+
+
+@media only screen and (max-width: 1900px) {
+    .avgReplTime , .resolvedTickets , .totalChats {
+        max-width: 52%;
+    }
+}
+
+@media only screen and (max-width: 1720px) {
+    .avgReplTime , .resolvedTickets , .totalChats {
+        max-width: 59%;
+    }
+}
+
+@media only screen and (max-width: 1720px) {
+    .avgReplTime , .resolvedTickets , .totalChats {
+        max-width: 64%;
+    }
+}
+
+
+@media only screen and (max-width: 1440px) {
+    .avgReplTime , .resolvedTickets , .totalChats {
+        max-width: 71%;
+    }
+}
+
+@media only screen and (max-width: 1270px) {
+    .avgReplTime , .resolvedTickets , .totalChats {
+        max-width: 78%;
+    }
+}
+
+@media only screen and (max-width: 1159px) {
+    .avgReplTime , .resolvedTickets , .totalChats {
+        max-width: 85%;
+    }
+}
+
+@media only screen and (max-width: 1059px) {
+    .avgReplTime , .resolvedTickets , .totalChats {
+        max-width: 100%;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .avgReplTime , .resolvedTickets , .totalChats {
+        max-width: 100%;
+    } 
+
+    .avgReplTime > div , .resolvedTickets > div , .totalChats > div {
+        max-width: 60%;
+    } 
+}
+

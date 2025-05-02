@@ -269,3 +269,18 @@ form > .loginBtn:active {
 .error {
     color: red;
 }
+
+
+.loader {
+    text-align: center;
+    margin: var(--spacing-md) 0px 0px 0px;
+}
+
+
+
+
+@media only screen and (max-width: 1500px){
+    .loginMain > .loginWrapper .loginImgDiv {
+        display: none;
+    }
+}

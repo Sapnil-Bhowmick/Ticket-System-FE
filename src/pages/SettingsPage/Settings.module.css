@@ -47,8 +47,11 @@
     line-height: auto;
     letter-spacing: 0px;
 
+    border: none;
+
     cursor: pointer;
 }
+
 
 
 .editDiv {

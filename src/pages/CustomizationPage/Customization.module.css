@@ -596,3 +596,38 @@
     outline: none;
     border: none;
 }
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 1440px){ 
+    .preview {
+        margin: 0px;
+    } 
+
+    .custom_2 > .welcomeMessagePreview {
+        margin: 0px;
+    }
+}
+
+
+@media screen and (max-width: 895px) {
+    .preview {
+        margin: 0px 30px 0px 0px;
+    }
+}
+
+@media screen and (max-width: 761px) {
+    .preview {
+        margin: 0px 30px 0px 0px;
+    } 
+
+    .custom_2 > .welcomeMessagePreview {
+        margin: 0px 30px 0px 0px;
+    }
+}

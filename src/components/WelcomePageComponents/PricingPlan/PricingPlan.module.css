@@ -203,3 +203,11 @@
 .pricingBtn:hover {
     cursor: pointer;
 }
+
+
+
+@media only screen and (max-width: 576px) {
+    .PricingPlanMain {
+        display: none;
+    } 
+}

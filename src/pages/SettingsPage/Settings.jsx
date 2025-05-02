@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { logoutUser } from "../../Redux/slices/userSlice.js"
 import { useNavigate } from "react-router-dom"
 
+import ClipLoader from "react-spinners/ClipLoader"
 
 
 const intialFormState = {
@@ -40,6 +41,7 @@ const Settings = () => {
   const token = useSelector((store) => store.USER.token)
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const [isLoading, setIsLoading] = useState(false)
   const [formStateData, formDispatch] = useReducer(formStateReducer, intialFormState)
   const [showInfo, setShowInfo] = useState({
     showEmailInfo: false,
@@ -81,6 +83,7 @@ const Settings = () => {
 
   const updateProfile = async (data) => {
     // console.log("Inside updateProfile")
+    setIsLoading(true)
     try {
       const res = await axios.patch(
         api_constants.BASE_URL + api_constants.EDIT_PROFILE,
@@ -96,6 +99,10 @@ const Settings = () => {
 
       toast.success(res.data.message)
 
+      formDispatch({
+        type: "RESET_FORM"
+      })
+
       if (data.hasOwnProperty("emailID") || data.hasOwnProperty("password")) {
         // // console.log("Key exists");
         dispatch(logoutUser())
@@ -108,6 +115,10 @@ const Settings = () => {
       if (errMessage) {
         toast.error(errMessage)
       }
+    }
+
+    finally {
+      setIsLoading(false)
     }
   }
 
@@ -206,9 +217,17 @@ const Settings = () => {
               </div>
             </div>
 
-            <button className={styles.saveBtn} onClick={handleSaveProfile}>
-              Save
-            </button>
+            {
+              isLoading ?
+                <button className={styles.saveBtn} onClick={handleSaveProfile}>
+                  <ClipLoader size={20} color={"#green"} className={styles.loader} />
+                </button>
+                :
+                <button className={styles.saveBtn} onClick={handleSaveProfile}>
+                  Save
+                </button>
+            }
+
           </div>
 
         </div>

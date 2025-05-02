@@ -30,6 +30,7 @@ const TeamMembersSection = ({ setIsModalOpen, isModalOpen }) => {
 
   const token = useSelector((store) => store.USER.token)
   const teamMembers = useSelector((store) => store.MEMBER.teamMembers)
+  const payload = useSelector((store) => store.USER.payload)
 
   const handleEdit = (member, activeIndex) => {
     setActiveMember(member)
@@ -40,7 +41,9 @@ const TeamMembersSection = ({ setIsModalOpen, isModalOpen }) => {
 
 
   useEffect(() => {
-    getTeamMembers()
+    if(payload?.role === "ADMIN" && !payload?.isMember){
+      getTeamMembers()
+    }
   }, [])
 
   const getTeamMembers = async () => {
