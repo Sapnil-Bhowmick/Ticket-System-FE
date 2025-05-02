@@ -50,6 +50,10 @@
   - Settings
      - Admin can edit their profile
      - Team Members can also edit their profile
+   
+  - NotFound
+     - When user tries to access incorrect routes then they will be redirected to this page
+     - Have buttons to navigate the user to specific pages
 
    - Chatbot
       - The landing page have a chatbot , where users can fill in the form and start asking queries
