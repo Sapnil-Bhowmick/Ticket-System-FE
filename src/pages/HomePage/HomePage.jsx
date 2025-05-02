@@ -33,7 +33,7 @@ const HomePage = () => {
     const [isMessageBoxOpen, setIsMessageBoxOpen] = useState(true)
     // const [isChatStarted, setIsChatStarted] = useState(false)
 
-    console.log("MYQUERY" , myQuery)
+    // console.log("MYQUERY" , myQuery)
 
     const [introForm, setIntroForm] = useState({
         name: "",
