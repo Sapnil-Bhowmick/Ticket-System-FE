@@ -26,10 +26,15 @@ const querySlice = createSlice({
                 state.myQuery = [action.payload.data]
             }
             
+        } ,
+
+        clearQuery: (state , action) => {
+            state.myQuery = null,
+            state.queryUserInfo = null
         }
     }
 })
 
 
-export const {addQuery , addQueryUser , appendQuery} = querySlice.actions
+export const {addQuery , addQueryUser , appendQuery, clearQuery} = querySlice.actions
 export default querySlice.reducer

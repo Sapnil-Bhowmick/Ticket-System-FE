@@ -98,8 +98,8 @@ const App = () => {
         }
     }
 
-    console.log("isMember" , isMember)
-    console.log("isAdmin" , isAdmin)
+    // console.log("isMember" , isMember)
+    // console.log("isAdmin" , isAdmin)
 
     return <RouterProvider router={AppRouter(token , isMember , isAdmin)} />
 };

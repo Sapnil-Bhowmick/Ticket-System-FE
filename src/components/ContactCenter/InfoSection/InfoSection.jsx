@@ -25,7 +25,7 @@ const InfoSection = () => {
     const dispatch = useDispatch()
     const activeChat = useSelector((store) => store.TICKET.activeTicket)
     const payload = useSelector((store) => store.USER.payload)
-    console.log("payload", payload)
+    // console.log("payload", payload)
     const { token, userInfo } = useSelector((store) => store.USER)
 
     const [showTeamMembers, setShowTeamMembers] = useState(false)
@@ -41,7 +41,7 @@ const InfoSection = () => {
 
     useEffect(() => {
         if (!payload?.isMember && payload?.role === "ADMIN") {
-            console.log("Get Team Members")
+            // console.log("Get Team Members")
             getTeamMembers()
         }
     }, [payload])
@@ -131,7 +131,7 @@ const InfoSection = () => {
     }
 
     const handleAssignToTeamMember = (memberID) => {
-        console.log("MemberId" , memberID)
+        // console.log("MemberId" , memberID)
         setShowTeamMembers(false)
         setIsAssignToMember(true)
         setSelectedMemberID(memberID)

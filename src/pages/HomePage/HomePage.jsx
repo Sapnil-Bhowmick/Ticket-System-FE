@@ -32,6 +32,9 @@ const HomePage = () => {
     // // console.log("queryUserInfo", queryUserInfo)
     const [isMessageBoxOpen, setIsMessageBoxOpen] = useState(true)
     // const [isChatStarted, setIsChatStarted] = useState(false)
+
+    console.log("MYQUERY" , myQuery)
+
     const [introForm, setIntroForm] = useState({
         name: "",
         email: "",
@@ -65,7 +68,7 @@ const HomePage = () => {
         if (queryUserInfo && queryUserInfo._id) {
             getMessages()
         }
-    }, [isMessageBoxOpen])
+    }, [isMessageBoxOpen , queryUserInfo])
 
 
     useEffect(() => {
@@ -387,8 +390,10 @@ const HomePage = () => {
                                                 </div>
                                             }
 
+                                            {/* User Prompts */}
+
                                             {
-                                                !myQuery && queryUserInfo &&
+                                                (myQuery === null || myQuery?.length === 0) && queryUserInfo &&
                                                 <div className={styles.messagePrompt}>
                                                     <div className={styles.promptMain}>
                                                         <img src={hublyLogo} alt="" />

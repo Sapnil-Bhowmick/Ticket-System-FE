@@ -20,7 +20,7 @@ const ChatSection = () => {
   useEffect(() => {
     getAllTickets()
     // console.log("in useEffect -> chatSection")
-  }, [activeTicket])
+  }, [])
 
   const getAllTickets = async () => {
     // console.log("inside getAllTickets")
@@ -44,7 +44,11 @@ const ChatSection = () => {
       // // console.log(res.data)
     }
     catch (err) {
-      toast.error("Unable to fetch Chats")
+      // toast.error("Unable to fetch Chats")
+      const errMessage = err?.response?.data?.error?.message
+      if (errMessage) {
+        toast.error(errMessage)
+      }
     }
   }
 
@@ -62,7 +66,7 @@ const ChatSection = () => {
         <div className={styles.chatContainer}>
           {
             all_tickets && all_tickets.length !== 0 ? (
-              all_tickets.map((ticket , index) => <SingleChat key={ticket._id} ticketData={ticket} chatNo={index + 1} />)
+              all_tickets.map((ticket, index) => <SingleChat key={ticket._id} ticketData={ticket} chatNo={index + 1} />)
             ) : (
               <p className={styles.notFoundText}>No Chats Found</p>
             )

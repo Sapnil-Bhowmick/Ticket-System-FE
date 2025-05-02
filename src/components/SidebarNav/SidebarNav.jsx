@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { clearTicketData } from "../../Redux/slices/ticketSlice"
 import { useEffect } from "react"
 import { clearTeamMembers } from "../../Redux/slices/memberSlice"
+import { clearQuery } from "../../Redux/slices/querySlice"
 
 
 const SidebarNav = ({ activePage }) => {
@@ -29,6 +30,7 @@ const SidebarNav = ({ activePage }) => {
         dispatch(logoutUser())
         dispatch(clearTicketData())
         dispatch(clearTeamMembers())
+        dispatch(clearQuery())
     }
 
     useEffect(() => {

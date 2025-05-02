@@ -10,6 +10,7 @@ const SingleChat = ({ ticketData, chatNo }) => {
   const activeTicket = useSelector((store) => store.TICKET.activeTicket)
 
   const handleActiveChat = () => {
+    // console.log("CHAT-NO" , chatNo)
     dispatch(addActiveTicket({
       data: ticketData ,
       chatNo

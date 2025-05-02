@@ -15,14 +15,14 @@ const userFilter = createFilter("USER", ["userInfo", "token"]);
 // Apply filtering to persist only the `activeTicket` from the `TICKET` slice
 const ticketFilter = createFilter("TICKET", ["activeTicket" , "activeChatNo"]);
 
-const queryFilter = createFilter("QUERY" , ["queryUserInfo"])
+// const queryFilter = createFilter("QUERY" , ["queryUserInfo"])
 
 // Persist Config
 const persistConfig = {
   key: "root", // Use 'root' to persist all reducers
   storage,
-  whitelist: ["USER", "TICKET" , "QUERY"], // Persist both `USER` and `TICKET`
-  transforms: [userFilter, ticketFilter, queryFilter], // Apply filters for `USER` and `TICKET` and "QUERY"
+  whitelist: ["USER", "TICKET"], // Persist both `USER` and `TICKET`
+  transforms: [userFilter, ticketFilter], // Apply filters for `USER` and `TICKET` and "QUERY"
 };
 
 // Combine reducers

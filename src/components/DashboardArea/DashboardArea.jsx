@@ -37,7 +37,7 @@ const DashboardArea = () => {
     // // console.log("token", token)
 
     useEffect(() => {
-        console.log("Get all tickets")
+        // console.log("Get all tickets")
         getAllTickets()
     }, [])
 
@@ -126,9 +126,9 @@ const DashboardArea = () => {
                 <div className={styles.ticketContainer}>
                     {
                         ticketTypeArr && ticketTypeArr.length !== 0 ? (
-                            ticketTypeArr.map((ticket, _) => {
-                                return <Ticket ticketdata={ticket} key={ticket._id} />
-                            })
+                            ticketTypeArr.map((ticket, index) => {
+                                return <Ticket ticketdata={ticket} ticketNo={index+1} key={ticket._id} />
+                            }) 
 
                         ) :
                             <p className={styles.notFoundText}>No Tickets Found</p>

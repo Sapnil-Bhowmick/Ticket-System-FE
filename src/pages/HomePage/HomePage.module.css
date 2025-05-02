@@ -294,6 +294,10 @@
     margin: var(--spacing-md) 0px 0px 0px;
 }
 
+.formDivMain>.form>.btnDiv > button {
+    cursor: pointer;
+}
+
 .formDivMain>.form>.btnDiv>button {
     width: 100%;
     max-width: 203px;

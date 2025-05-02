@@ -8,14 +8,15 @@ import { useDispatch } from "react-redux"
 
 
 
-const Ticket = ({ticketdata}) => {
+const Ticket = ({ticketdata , ticketNo}) => {
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
     const handleOpenTicket = () => {
         dispatch(addActiveTicket({
-            data: ticketdata
+            data: ticketdata,
+            chatNo: ticketNo
         }))
 
         navigate("/ContactCenter")
