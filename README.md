@@ -89,8 +89,7 @@
   - Whenver an admin member adds new team members then all these team members will get added under the Default Admin
     
 
-
-
+# All Code is present in the Branch -> Functionality
 
 
 
