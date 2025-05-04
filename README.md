@@ -84,6 +84,9 @@
   - A team member can edit their profile and password also
     - If a team member edit password -> then only their password is updated
     - Afterwards if the Default Admin changes their password then again passwords of all the team members under this Default Admin will be updated to this new password
+   
+
+  - Whenver an admin member adds new team members then all these team members will get added under the Default Admin
     
 
 
