@@ -42,7 +42,7 @@
      - Different metrics are provided for analysing performance
      - Here the Missed Chats line graph visually depicts the weekly missed chats
    
-  - Chatbot Customozation
+  - Chatbot Customization
      - Header , Background color of chatbot can be customized
      - Placeholders of the Introduction Form , Welcome and prompt messages can be custiomized also
      - The Missed chat duration can also be set from here -> Defult is 1hr
@@ -57,7 +57,7 @@
 
    - Chatbot
       - The landing page have a chatbot , where users can fill in the form and start asking queries
-      - These quseries are to be answered by the Default admn and team members
+      - These quseries are to be answered by the Default admin and team members
 
 
 # Demo Credentials
@@ -75,6 +75,16 @@
          - Password:  123456
 
 
+# Messages (as per requirement)
+  - A person will not receive message send by others in real-time.
+    - Only for Users raising queries -> Just close the chat and reopen it without refreshing the page and new meesages will be fetched.
+    - For Default Admin and team members -> Refreshing the page will fetch new messages
+
+# Sending Queries
+  - If we want to start quering as a new user then we have to refresh the page
+  - If we want to switch back to a user , then just enter the correct credentials of that user and the message history will appear
+
+
 # Live Demo Link
   - https://sapnil-ticket-system.netlify.app/
 
@@ -87,6 +97,7 @@
    
 
   - Whenver an admin member adds new team members then all these team members will get added under the Default Admin
+  - 
     
 
 # All Code is present in the Branch -> Functionality
