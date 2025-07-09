@@ -89,7 +89,7 @@
   - https://sapnil-ticket-system.netlify.app/
 
 
-# An Imp Note (Implemented based on initial understanding -  correction is simple if needed.)
+# An Imp Note (Implemented based on initial understanding)
   - Whenever Default Admin add new members then the password of this member will be same as admin password
   - A team member can edit their profile and password also
     - If a team member edit password -> then only their password is updated
